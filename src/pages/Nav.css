@@ -1,0 +1,366 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 75px;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+}
+
+.navbar_link {
+  position: relative;
+}
+
+.navbar_link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.navbar_link:hover::after {
+  width: 100%;
+}
+
+.navbar_links {
+    display: flex;
+}
+
+.navbar_link {
+    padding: 0 0.3rem;
+    color: inherit;
+}
+
+.navbar_burger {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: inherit;
+}
+.menuCouleur:hover {
+  color: white;
+}
+
+/* Slider */
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .slider_button {
+    background-color: grey;
+    color: white;
+    border: none;
+    margin: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .slider_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: grey;
+  }
+  
+  .number {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .slider_content {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 80vh;
+  }
+  
+  .div_slider_image {
+    flex-basis: 60%;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .slider_image {
+    object-fit: contain;
+    width: 50%;
+  }
+  
+  .slider_text {
+    color: white;
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 40%;
+  }
+  
+
+  /* logo */
+  .logo_slider {
+    width: 100%;
+    height: 50%;
+  }
+  
+ 
+  /* services */
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .block {
+    width: 27%;
+    height: 240px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .paragraph {
+    font-size: 14px;
+  } 
+  .block:hover
+  {
+    opacity: 1.0;
+    background-color: rgb(189, 189, 189);
+  }
+
+  /* fleche service  */
+  .fa-arrow-right
+  {
+  opacity: 0;
+  transition: opacity 300ms;
+  }
+
+  .block:hover .fa-arrow-right
+  {
+    opacity: 1.0;
+  }
+
+
+
+
+
+@media screen and (max-width:850px) {
+  /* NAVBAR */
+    .navbar_links {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right: -100vw;
+        bottom: 0;
+        width: 0;
+        height: 100vh;
+        padding: 2rem;
+        visibility: hidden;
+        background-color: black;
+        transition: all 0.8s ease-out;
+    }
+
+    .show-nav .navbar_links {
+        width: 100vw;
+        right: 0;
+        visibility: visible;
+    }
+
+    .navbar_link {
+        display: block;
+        padding: 1.5rem;
+        font-size: 5vw;
+    }
+
+    .navbar_burger {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .navbar_burger:hover {
+        cursor: pointer;
+    }
+
+    .burger-bar,
+    .burger-bar::before,
+    .burger-bar::after {
+        display: block;
+        width: 40px;
+        height: 3px;
+        position: relative;
+        border-radius: 3px;
+        background: white;
+        transition: all .5s ease-in-out;
+    }
+
+    .burger-bar::before,
+    .burger-bar::after {
+        content: "";
+        position: absolute;
+        left: 0;
+    }
+
+    .burger-bar::before {
+        transform: translateY(-12px); /* Décale l'élément .burger-bar vers le haut de 12 pixels */
+    }
+
+    .burger-bar::after {
+        transform: translateY(12px);  /* Décale l'élément .burger-bar vers le bas de 12 pixels */
+    }
+
+    .show-nav .burger-bar {
+        width: 0;
+        background: transparent;
+    }
+
+    .show-nav .burger-bar::before {
+        transform: rotate(45deg);   /* Fait pivoter l'élément .burger-bar vers un angle de 45 degrés lorsque la classe .show-nav est présente */
+    }
+
+    .show-nav .burger-bar::after {
+        transform: rotate(-45deg);  /* Fait pivoter l'élément .burger-bar vers un angle de -45 degrés lorsque la classe .show-nav est présente */
+    }
+
+    /* burger boutton transition */
+    .navbar_item {
+        transform: translateY(100vh); /* Décale l'élément .navbar_item vers le bas de la hauteur de la fenêtre */
+    }
+
+    .show-nav .navbar_item {
+        transform: translateY(0); /* Rétablit la position d'origine de l'élément .navbar_item lorsque la classe .show-nav est présente */
+    }
+
+    .show-nav .slideInDown-1 {
+        transition: all 0.8s ease-out;
+    }
+
+    .show-nav .slideInDown-2 {
+        transition: all 0.9s ease-out;
+    }
+
+    .show-nav .slideInDown-3 {
+        transition: all 1.0s ease-out;
+    }
+
+    .show-nav .slideInDown-4 {
+        transition: all 1.1s ease-out;
+    }
+    .show-nav .slideInDown-5 {
+      transition: all 1.2s ease-out;
+  }
+
+
+  /* slider responsive */
+  .slider_content{
+      flex-direction: column;
+  }
+    
+  .div_slider_image {
+      order: -1; /* Place l'image en premier dans l'ordre d'affichage */
+  }
+    
+  .slider_text {
+      order: 1; /* Place le text après l'image dans l'ordre d'affichage */
+  }
+  .logo_slider {
+      display: none;
+  }
+
+
+
+/* demander un devis (PROJET) responsive */
+.backProjet {
+  align-items: center;
+}
+.paraProjet {
+  align-items: center;
+}
+.blockInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: red;
+ }
+ .nav-item{
+  order: 1;
+}
+.nav-item:nth-child(2) {
+  order: 2;
+}
+.nav-item:nth-child(3) {
+  order: 3;
+}
+
+.containerSquare {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.square {
+  order: 1;
+}
+.square:nth-child(2) {  /* nth-child() en CSS permet de sélectionner des éléments en fonction de leur position parmi les enfants de leur parent. */
+  order: 2;
+}
+.square:nth-child(3) {
+  order: 3;
+}
+
+
+/*(PORTFOLIO) responsive */
+
+.project-title,
+.project-description,
+.project-intervention {
+  text-align:left;
+  font-size: 11px;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* Ajuste l'élément pour qu'il s'adapte à l'intérieur de son conteneur en préservant son rapport hauteur/largeur d'origine */
+}
+
+.project-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-content {
+  margin-right: 0;
+  padding: 20px;
+}
+
+
+
+}

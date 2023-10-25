@@ -1,0 +1,274 @@
+* {
+  box-sizing: border-box; /* Utilise la boîte de modèle border-box */
+  outline: none;  /* Supprime la bordure de contour */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;  /* Améliore l'apparence des polices en utilisant l'anti-crénelage sur WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Améliore l'apparence des polices en utilisant l'effet de niveaux de gris sur Firefox pour macOS */
+  padding: 0;
+}
+
+h2,
+p {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  font-size: 19px;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  height: calc(100vh - 35px); /* Définit la hauteur de l'élément .main en utilisant le calcul de la hauteur de la fenêtre -35 pixels */
+}
+
+
+/* Services h1,h2,p */
+.classh1 {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 15px;
+}
+.classh2 {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 15px;
+}
+
+/*footer*/
+.App { 
+  text-align: center;
+ }
+ .footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   height: 50px;
+   padding-left: 100px;
+ }
+ .mentions-legales {
+   margin-left: auto;
+   padding-right: 100px;
+ }
+ .footer-Mention {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.footer-Mention p {
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* svg */
+.containerSvg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;  /* Définit un espacement de 20 pixels entre les éléments */
+}
+
+/* apropos */
+.backApropos {
+  background-color: rgb(82, 82, 82);
+  padding: 1px;
+}
+.aPropos {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  padding: 10px;
+}
+.imgProfile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  height: auto;
+  width: auto;
+  padding: 10px;
+}
+.prenom {
+  text-align: center;
+  color: white;
+  font-size: 26px;
+  padding: 10px;
+}
+.metier {
+  text-align: center;
+  color: rgb(187, 187, 187);
+  font-size: 25px;
+  font-style: italic;
+  padding: 10px;
+}
+.presentation {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+}
+
+
+/* devis */
+.backDevis {
+  background-color: black;
+  color: white;
+  padding-top: 2px;
+  padding-bottom: 410px;
+}
+.h1Devis {
+  text-align: center;
+  font-size: 50px;
+  margin: 50px;
+  padding: 40px;
+}
+.paraDevis {
+  text-align: center;
+  font-size: 20px;
+  padding: 40px;
+}
+.buttonDevis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgb(60, 60, 60);
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 2s;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buttonDevis:hover {
+  background-color: darkblue;
+}
+
+/* projet */
+.h1Projet {
+  text-align: center;
+  padding-top: 20px;
+}
+.paraProjet {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 20px; 
+}
+.paraDemande {
+  display: flex;
+  justify-content: left;
+  padding-left: 15px;
+  padding-top: 30px;
+}
+.containerSquare {
+  display: flex;
+  justify-content: space-evenly;
+  padding:20px;
+}
+.square {
+  width: 280px;
+  height: 200px;
+  background-color: #eaeaea;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.paraSite1 {
+  padding: 6px;
+  color:rgb(60, 187, 174);
+}
+
+.paraSite2 {
+  padding: 6px;
+  color: rgb(184, 62, 17);
+}
+
+.paraSite3 {
+  padding: 6px;
+  color: rgb(118, 117, 117);
+}
+.imgSquare {
+  height: 160px;
+  width: 277px;
+  position: relative;
+}
+.buttonProjet {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding: 20px;
+}
+/* Projet Autre */
+.projetPara {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.champText {
+  padding-left: 10px;
+}
+/*checkMark site vitrine, e-commerce, autre*/
+.square.selected {
+  position: relative;
+}
+.square.selected .checkMark {
+  color: white;
+  background-color: green;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Effectue une translation de -50% sur l'axe horizontal et -50% sur l'axe vertical */
+  width: 32px;
+  height: 45px;
+  border-radius: 50%;
+}
+.checkMark {
+  font-size: 30px;
+}
+
+
+/* portfolio */
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* Ajuste l'élément pour qu'il s'adapte à l'intérieur de son conteneur en préservant son rapport hauteur/largeur d'origine */
+}
+
+
+/* erreur champs*/
+.error-message {
+  color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
