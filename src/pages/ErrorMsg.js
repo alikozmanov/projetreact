@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'; // Importation du hook useForm pour g
 import axios from 'axios';
 
 
-export default function ErrorMsg() {  // Définit une fonction nommée ErrorMsg et l'exporte en tant que fonction par défaut.
+export default function ErrorMsg({ projectType }) { // Composant ErrorMsg exporté par défaut, prenant "projectType" comme argument.
   const yupValidation = Yup.object().shape({ // "Yup.object()" crée un schéma de validation pour un objet. La méthode "shape({})" indique que l'objet doit respecter un certain schéma spécifié à l'intérieur des accolades.
     first_name: Yup.string().required('Veuillez entrer votre prénom.').min(4, 'Le prénom doit contenir au moins 4 caractères.'), // méthode de Yup indique que la valeur de la propriété "firstName" doit être une chaîne de caractères. Si la propriété "firstName" est vide, une erreur sera renvoyée avec le message "Veuillez entrer votre prénom." 
     last_name: Yup.string().required('Veuillez entrer votre nom.').min(4, 'Le nom doit contenir au moins 4 caractères.'),
@@ -37,6 +37,7 @@ export default function ErrorMsg() {  // Définit une fonction nommée ErrorMsg 
       // Utilisation d'une instruction switch pour gérer différentes méthodes HTTP
       switch (method) {
         case 'POST':
+          data.project_type = projectType; // Attribue la valeur de "projectType" à la propriété "project_type" de l'objet "data"
           // Effectue une requête POST vers l'URL de base avec les données et un en-tête CSRF
          console.log(data);
          response = await axios.post(baseURL, data, {

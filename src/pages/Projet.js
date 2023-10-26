@@ -172,8 +172,8 @@ const Projet = () => {
         {/* Onglet 3 */}
         <Tab eventKey={2} title="Informations sur vous">
           {/* Contenu de l'onglet 3 */}
-          {/* Composant 'ErrorMsg' pour afficher un message d'erreur */}
-          <ErrorMsg />
+          {/* Composant 'ErrorMsg'*/}
+          <ErrorMsg projectType={project_type} />  {/* crée une instance "ErrorMsg" en lui passant la valeur "project_type".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
         </Tab>
       </Tabs>
       {/* Boutons pour naviguer entre les onglets */}
