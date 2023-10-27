@@ -18,7 +18,7 @@ const Projet = () => {
   const [website_url, setWebsite] = useState(''); // Déclare une variable d'état 'website' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker l'adresse du site web lié au projet. 
   const [project_description, setProjectDescription] = useState(''); // Déclare une variable d'état 'projectDescription' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker une description du projet. 
   const [project_type, setProjectType] = useState('');// Déclarez la variable d'état projectType et le setter setProjectType dans votre composant
-  const [services_requests, setServicesRequests] = useState('');
+  const [services_requests, setServicesRequests] = useState([]);
 
 
   // Fonction pour gérer le changement d'onglet
@@ -46,6 +46,22 @@ const Projet = () => {
     } else if (index === 2) {
       setProjectType("Autre");
     }
+  };
+
+  // onglet 2 cocher une case
+  const handleServiceRequestChange = (service) => {
+    const updatedServices = [...services_requests]; // Créez une copie de la liste des services demandés
+    const serviceIndex = updatedServices.indexOf(service);
+  
+    if (serviceIndex !== -1) {
+      // Si le service est déjà dans la liste, retirez-le
+      updatedServices.splice(serviceIndex, 1);
+    } else {
+      // Sinon, ajoutez-le à la liste
+      updatedServices.push(service);
+    }
+  
+    setServicesRequests(updatedServices); // Mettez à jour l'état des services demandés
   };
 
 
@@ -79,7 +95,7 @@ const Projet = () => {
     setWebsite('');
     setProjectDescription('');
     setProjectType('');
-    setServicesRequests('');
+    setServicesRequests([]); 
     setSelectedImages([]); // Réinitialisez également les sélections des carrés dans le premier onglet
   };
 
@@ -136,32 +152,62 @@ const Projet = () => {
           </h3>
           {/* Choix des services demandés avec des cases à cocher */}
           <label style={{ padding: "10px" }}>
-            <input type="checkbox" name="service" value="creation-site-internet" />
+            <input
+              type="checkbox"
+              name="service"
+              value="creation-site-internet"
+              onChange={() => handleServiceRequestChange("creation-site-internet")}
+            />
             <span style={{ marginLeft: "10px" }}>Créer votre site internet</span>
           </label>
           <br />
           <label style={{ padding: "10px" }}>
-            <input type="checkbox" name="service" value="refonte-site-existant" />
+            <input
+              type="checkbox"
+              name="service"
+              value="refonte-site-existant"
+              onChange={() => handleServiceRequestChange("refonte-site-existant")}
+            />
             <span style={{ marginLeft: "10px" }}>Faire une refonte d'un site existant</span>
           </label>
           <br />
           <label style={{ padding: "10px" }}>
-            <input type="checkbox" name="service" value="ameliorer-site" />
+            <input
+              type="checkbox"
+              name="service"
+              value="ameliorer-site"
+              onChange={() => handleServiceRequestChange("ameliorer-site")}
+            />
             <span style={{ marginLeft: "10px" }}>Améliorer votre site</span>
           </label>
           <br />
           <label style={{ padding: "10px" }}>
-            <input type="checkbox" name="service" value="maintenance-site" />
+            <input
+              type="checkbox"
+              name="service"
+              value="maintenance-site"
+              onChange={() => handleServiceRequestChange("maintenance-site")}
+            />
             <span style={{ marginLeft: "10px" }}>Une maintenance de votre site</span>
           </label>
           <br />
           <label style={{ padding: "10px" }}>
-            <input type="checkbox" name="service" value="migration-site" />
+            <input
+              type="checkbox"
+              name="service"
+              value="migration-site"
+              onChange={() => handleServiceRequestChange("migration-site")}
+            />
             <span style={{ marginLeft: "10px" }}>Une migration de votre site</span>
           </label>
           <br />
           <label style={{ padding: "10px" }}>
-            <input type="checkbox" name="service" value="logo-site" />
+            <input
+              type="checkbox"
+              name="service"
+              value="logo-site"
+              onChange={() => handleServiceRequestChange("logo-site")}
+            />
             <span style={{ marginLeft: "10px" }}>Un logo pour votre site</span>
           </label>
           <br />
@@ -173,7 +219,7 @@ const Projet = () => {
         <Tab eventKey={2} title="Informations sur vous">
           {/* Contenu de l'onglet 3 */}
           {/* Composant 'ErrorMsg'*/}
-          <ErrorMsg projectType={project_type} />  {/* crée une instance "ErrorMsg" en lui passant la valeur "project_type".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
+          <ErrorMsg projectType={project_type} servicesRequests={services_requests} />  {/* crée une instance "ErrorMsg" en lui passant la valeur "project_type".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
         </Tab>
       </Tabs>
       {/* Boutons pour naviguer entre les onglets */}
