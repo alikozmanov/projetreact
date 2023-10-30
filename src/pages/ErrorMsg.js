@@ -1,11 +1,18 @@
-import React from 'react'; // Importation du module React pour créer des composants
+import React, { useState } from 'react';
 import * as Yup from 'yup'; // Importe toutes les fonctionnalités du module Yup (bibliothèque)
 import { yupResolver } from '@hookform/resolvers/yup'; // Importe la fonction yupResolver depuis le module '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'; // Importation du hook useForm pour gérer le formulaire
 import axios from 'axios';
+// Importe le composant Popup depuis le fichier './Popup' et importe le CSS
+import Popup from './Popup';
+import './Popup.css';
+
 
 
 export default function ErrorMsg({ projectType, servicesRequests }) { // Composant ErrorMsg exporté par défaut, prenant "projectType" comme argument.
+  // Ajoutez un état pour gérer l'affichage de la popup
+  const [showPopup, setShowPopup] = useState(false); // Crée 'showPopup' à l'aide de useState et initialise sa valeur à 'false'.
+
   const yupValidation = Yup.object().shape({ // "Yup.object()" crée un schéma de validation pour un objet. La méthode "shape({})" indique que l'objet doit respecter un certain schéma spécifié à l'intérieur des accolades.
     first_name: Yup.string().required('Veuillez entrer votre prénom.').min(4, 'Le prénom doit contenir au moins 4 caractères.'), // méthode de Yup indique que la valeur de la propriété "firstName" doit être une chaîne de caractères. Si la propriété "firstName" est vide, une erreur sera renvoyée avec le message "Veuillez entrer votre prénom." 
     last_name: Yup.string().required('Veuillez entrer votre nom.').min(4, 'Le nom doit contenir au moins 4 caractères.'),
@@ -56,7 +63,9 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
         default:
           console.error('Méthode HTTP non prise en charge'); // Affiche une erreur si la méthode n'est pas reconnue
           return; // Sort de la fonction
-      }
+      } // Après avoir traité la soumission avec succès, réinitialisez le formulaire
+      reset(); // Réinitialise le formulaire en utilisant la fonction reset de react-hook-form
+      setShowPopup(true); // Pour afficher le popup lorsque showPopup est true
     } catch (error) {
     }
   }
@@ -137,6 +146,10 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
         <div className="mt-3">
           <button type="submit" className="btn btn-primary"> Envoyer </button> {/* l'attribut type="submit" indique que le bouton est utilisé pour soumettre un formulaire */}
         </div>
+         {/* Afficher la popup si showPopup est true */}
+         {/* composante <Popup> 2 propriétés:'showPopup'et'onClose'. La propriété 'showpopu' affiche tandis que 
+         'onClose' une fonction qui sera appelée lorsque la popup est fermée*/}
+         <Popup showPopup={showPopup} onClose={() => setShowPopup(false)} />
       </form>
     </div>
   );

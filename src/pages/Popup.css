@@ -1,0 +1,32 @@
+/* Définition de la classe .popup */
+.popup {
+  position: fixed; 
+  top: 0; /* Aligné en haut de la fenêtre */
+  left: 0; /* Aligné à gauche de la fenêtre */
+  width: 100%; /* Largeur de la popup à 100% de la fenêtre */
+  height: 100%; /* Hauteur de la popup à 100% de la fenêtre */
+  background: rgba(0, 0, 0, 0.5); /* Arrière-plan semi-transparent en noir */
+  display: flex; /* Utilisation de Flexbox pour le centrage */
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
+}
+
+/* Définition de la classe .popup-content */
+.popup-content {
+  background: #fff; /* Arrière-plan blanc pour le contenu de la popup */
+  padding: 20px; /* Espacement interne de 20 pixels autour du contenu */
+  border-radius: 5px; /* Coins arrondis de 5 pixels */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombre légère autour de la popup */
+  text-align: center; 
+}
+
+/* Définition du style des boutons à l'intérieur de la popup */
+.popup button {
+  background: #007bff; 
+  color: #fff; 
+  border: none; 
+  padding: 10px 20px; /* Espacement interne du bouton */
+  border-radius: 5px; /* Coins arrondis de 5 pixels pour le bouton */
+  cursor: pointer; /* Curseur sous forme de main au survol */
+  margin-top: 10px; /* Marge supérieure de 10 pixels pour espacer les boutons */
+}

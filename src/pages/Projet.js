@@ -10,12 +10,6 @@ const Projet = () => {
   const [activeTab, setActiveTab] = useState(0);  // // Déclare une variable d'état 'activeTab' avec une valeur initiale de 0. Cette variable sera utilisée pour suivre l'onglet actif sélectionné dans le composant.
   const [selectedImages, setSelectedImages] = useState([]); // Déclare une variable d'état 'selectedImages' avec une valeur initiale d'un tableau vide. Cette variable sera utilisée pour stocker les images sélectionnées dans le projet.
   const [autreTexte, setAutreTexte] = useState(''); // Déclare une variable d'état 'autreTexte' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker un texte supplémentaire lié au projet. 
-  const [first_name, setFirstName] = useState(''); // Déclare une variable d'état 'firstName' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker le prénom d'une personne associée au projet.
-  const [last_name, setLastName] = useState(''); // Déclare une variable d'état 'lastName' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker le nom de famille d'une personne associée au projet. 
-  const [company_name, setOrganization] = useState(''); // Déclare une variable d'état 'organization' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker le nom de l'organisation liée au projet. 
-  const [email, setEmail] = useState(''); // Déclare une variable d'état 'email' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker l'adresse e-mail de contact pour le projet.
-  const [phone_number, setPhone] = useState(''); // Déclare une variable d'état 'phone' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker le numéro de téléphone de contact pour le projet.
-  const [website_url, setWebsite] = useState(''); // Déclare une variable d'état 'website' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker l'adresse du site web lié au projet. 
   const [project_description, setProjectDescription] = useState(''); // Déclare une variable d'état 'projectDescription' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker une description du projet. 
   const [project_type, setProjectType] = useState('');// Déclarez la variable d'état projectType et le setter setProjectType dans votre composant
   const [services_requests, setServicesRequests] = useState([]);
@@ -52,7 +46,7 @@ const Projet = () => {
   const handleServiceRequestChange = (service) => {
     const updatedServices = [...services_requests]; // Créez une copie de la liste des services demandés
     const serviceIndex = updatedServices.indexOf(service);
-  
+
     if (serviceIndex !== -1) {
       // Si le service est déjà dans la liste, retirez-le
       updatedServices.splice(serviceIndex, 1);
@@ -60,7 +54,7 @@ const Projet = () => {
       // Sinon, ajoutez-le à la liste
       updatedServices.push(service);
     }
-  
+
     setServicesRequests(updatedServices); // Mettez à jour l'état des services demandés
   };
 
@@ -73,31 +67,20 @@ const Projet = () => {
     e.preventDefault();
 
     const formData = {
-      first_name,
-      last_name,
-      company_name,
-      email,
-      phone_number,
-      website_url,
       project_description,
       project_type, // Ajoutez project_type
       services_requests, // Ajoutez services_requests
       selectedImages,
-      autreTexte,
     };
 
+
     // Réinitialisez les valeurs du formulaire
-    setFirstName('');
-    setLastName('');
-    setOrganization('');
-    setEmail('');
-    setPhone('');
-    setWebsite('');
     setProjectDescription('');
     setProjectType('');
-    setServicesRequests([]); 
+    setServicesRequests([]);
     setSelectedImages([]); // Réinitialisez également les sélections des carrés dans le premier onglet
   };
+
 
   // Rendu du composant 'Projet'
   return (
