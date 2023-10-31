@@ -1,14 +1,11 @@
 import React from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faLaptop, faShoppingCart, faPuzzlePiece, faBlog, faSearch, faTools, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faLaptop, faShoppingCart, faPuzzlePiece, faBlog, faSearch, faTools, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Block = ({ icon, title, paragraph }) => {
   return (
     <div className="block">
-      <div className="icon">
-      {icon}
-      </div>
+      <div className="icon">{icon}</div>
       <h3 className="title">{title}</h3>
       <p className="paragraph">{paragraph}</p>
       <FontAwesomeIcon icon={faArrowRight} size="xl" />
@@ -31,29 +28,29 @@ const Services = () => {
     {
       icon: <FontAwesomeIcon icon={faPuzzlePiece} />,
       title: 'Application Web',
-      paragraph: 'Une application web pour interragir avec vos collaborateurs ou vos clients.',
+      paragraph: 'Une application web pour interagir avec vos collaborateurs ou vos clients.',
     },
     {
       icon: <FontAwesomeIcon icon={faBlog} />,
       title: 'Blog',
-      paragraph: 'Partagez vos connaissances expérience avec vos lecteurs avec un blog',
+      paragraph: 'Partagez vos connaissances et votre expérience avec vos lecteurs grâce à un blog.',
     },
     {
       icon: <FontAwesomeIcon icon={faSearch} />,
       title: 'Référencement - SEO',
-      paragraph: 'Je vous accompagne dans l\'amélioration de votre visibilité sur Google',
+      paragraph: "Je vous accompagne dans l'amélioration de votre visibilité sur Google.",
     },
     {
       icon: <FontAwesomeIcon icon={faTools} />,
       title: 'Maintenance WordPress',
-      paragraph: 'Votre site WordPress a besoin d\'une maintenance ? Laissez-moi faire !',
+      paragraph: "Votre site WordPress a besoin d'une maintenance ? Laissez-moi faire !",
     },
   ];
 
   return (
     <div>
-      <h1 className='classh1'>MES SERVICES</h1>
-      <h2 className='classh2'>MES PRINCIPAUX DOMAINES DE COMPÉTENCE</h2>
+      <h1 className="classh1">MES SERVICES</h1>
+      <h2 className="classh2">MES PRINCIPAUX DOMAINES DE COMPÉTENCE</h2>
       <div className="services">
         {blocks.map((block, index) => (
           <Block

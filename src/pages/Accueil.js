@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 // Importation de FontAwesome pour afficher des icônes
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône de la flèche droite
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône de la flèche gauche
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône de la flèche gauche et droite
+
 
 function Accueil() {
   const [currentSlide, setCurrentSlide] = useState(0); // État pour suivre l'index de la diapositive actuelle
@@ -16,8 +16,8 @@ function Accueil() {
     setCurrentSlide((prevSlide) => (prevSlide === 2 ? 0 : prevSlide + 1)); // Fonction pour passer à la diapositive suivante
   };
 
- // Déclenche la fonction `handleNextSlide` toutes les 4 secondes (images)
-  setTimeout(handleNextSlide, 4000); 
+  // Déclenche la fonction `handleNextSlide` toutes les 4 secondes (images)
+  setTimeout(handleNextSlide, 4000);
 
   const slides = [
     {
@@ -25,15 +25,15 @@ function Accueil() {
       title: "Titre de l'image 1",
       logo: "images/logo.jpeg",
       text: "goku",
-      textColor: "white", 
-      background: "red", 
+      textColor: "white",
+      background: "red",
     },
     {
       image: "/images/songohan.jpeg",
       title: "Titre de l'image 2",
       logo: "images/amazon.jpeg",
       text: "songohan",
-      textColor: "white", 
+      textColor: "white",
       background: "green",
     },
     {
@@ -41,7 +41,7 @@ function Accueil() {
       title: "Titre de l'image 3",
       logo: "images/youtube.jpeg",
       text: "songoten",
-      textColor: "white", 
+      textColor: "white",
       background: "blue",
     },
   ];
