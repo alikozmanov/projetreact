@@ -25,7 +25,7 @@ const projects = [
 function Portfolio() {
   return (
     <div>
-      {projects.map(project => (
+      {projects.map(project => ( // Parcourt le tableau de projets et crée un élément pour chaque projet
         <div key={project.id} style={{ display: 'flex' }}>
           <div style={{marginRight: '20px', padding: '100px' }}>
             {/* Titre du projet */}
@@ -39,9 +39,8 @@ function Portfolio() {
             {/* Image du projet */}
             <img
               className="project-image"
-              width="1024"
-              height="682"
               src={project.image}
+              alt={project.title}
             />
           </div>
         </div>

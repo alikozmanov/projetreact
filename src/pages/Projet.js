@@ -1,7 +1,7 @@
-// Import des modules et composants nécessaires depuis 'react' et 'react-bootstrap'
-import React, { useState } from 'react';
-import { Tabs, Tab, Button } from 'react-bootstrap';
-import ErrorMsg from './ErrorMsg';
+
+import React, { useState } from 'react';// Importe React et la fonction useState depuis la bibliothèque React.
+import { Tabs, Tab, Button } from 'react-bootstrap'; // Importe les composants Tabs, Tab et Button depuis React-Bootstrap.
+import ErrorMsg from './ErrorMsg'; // Importe ErrorMsg depuis le fichier ErrorMsg.js
 
 
 // composant fonctionnel appelé 'Projet'.
@@ -15,71 +15,80 @@ const Projet = () => {
   const [services_requests, setServicesRequests] = useState([]);
 
 
-  // Fonction pour gérer le changement d'onglet
-  const handleTabSelect = (index) => {
-    setActiveTab(index);
+  // Fonction pour gérer le changement d'onglet (0,1,2)
+  const handleTabSelect = (index) => { // Fonction handleTabSelect avec un paramètre 'index'
+    setActiveTab(index); // Met à jour la valeur de l'onglet actif en utilisant la valeur 'index'
   };
 
 
-  // Fonction pour gérer le clic sur une image carrée dans l'onglet 1
-  const handleImageClick = (index) => {
-    console.log(index);
+  // Onglet 1 : fonction pour gérer le clic sur une image carrée 
+const handleImageClick = (index) => {
+  // Vérifie si l'image est déjà sélectionnée
+  const isSelected = selectedImages.includes(index);
+  if (isSelected) {
+    // Si l'image est déjà sélectionnée, la désélectionne
+    setSelectedImages(selectedImages.filter((item) => item !== index));
+  } else {
+    // Si l'image n'est pas sélectionnée, l'ajoute à la liste des sélections
+    setSelectedImages([...selectedImages, index]);
+  }
 
-    const isSelected = selectedImages.includes(index);
-    if (isSelected) {
-      setSelectedImages(selectedImages.filter((item) => item !== index));
-    } else {
-      setSelectedImages([...selectedImages, index]);
-    }
+  // Mettre à jour project_type en fonction de la sélection de l'image carrée dans l'onglet 1
+  if (index === 0) {
+    // Si l'image sélectionnée a un index de 0, définir le type de projet comme "Un Site Vitrine"
+    setProjectType("Un Site Vitrine");
+  } else if (index === 1) {
+    // Si l'image sélectionnée a un index de 1, définir le type de projet comme "Un Site E-commerce"
+    setProjectType("Un Site E-commerce");
+  } else if (index === 2) {
+    // Si l'image sélectionnée a un index de 2, définir le type de projet comme "Autre"
+    setProjectType("Autre");
+  }
+};
 
-    // Mettre à jour project_type en fonction de la sélection de l'image carrée l'onglet 1
-    if (index === 0) {
-      setProjectType("Un Site Vitrine");
-    } else if (index === 1) {
-      setProjectType("Un Site E-commerce");
-    } else if (index === 2) {
-      setProjectType("Autre");
-    }
-  };
 
-  // onglet 2 cocher une case
-  const handleServiceRequestChange = (service) => {
-    const updatedServices = [...services_requests]; // Créez une copie de la liste des services demandés
-    const serviceIndex = updatedServices.indexOf(service);
+// Onglet 2 : cocher une case
+const handleServiceRequestChange = (service) => {
+  // Créez une copie de la liste des services demandés
+  const updatedServices = [...services_requests];
 
-    if (serviceIndex !== -1) {
-      // Si le service est déjà dans la liste, retirez-le
-      updatedServices.splice(serviceIndex, 1);
-    } else {
-      // Sinon, ajoutez-le à la liste
-      updatedServices.push(service);
-    }
+  // Trouvez l'indice du service dans la liste
+  const serviceIndex = updatedServices.indexOf(service);
 
-    setServicesRequests(updatedServices); // Mettez à jour l'état des services demandés
-  };
+  if (serviceIndex !== -1) {
+    // Si le service est déjà dans la liste, retirez-le
+    updatedServices.splice(serviceIndex, 1);
+  } else {
+    // Sinon, ajoutez-le à la liste
+    updatedServices.push(service);
+  }
+
+  // Mettez à jour l'état des services demandés
+  setServicesRequests(updatedServices);
+};
 
 
   // Vérifier si le bouton 'Suivant' doit être désactivé (l'onglet 3)
   const isNextButtonDisabled = (selectedImages.length === 0 && !autreTexte) || activeTab === 2;
 
-  // Fonction pour soumettre le formulaire
-  const handleSubmit = (e) => {
-    e.preventDefault();
+// Fonction pour soumettre le formulaire
+const handleSubmit = (e) => {
+  e.preventDefault(); // Empêche la soumission du formulaire par défaut
 
-    const formData = {
-      project_description,
-      project_type, // Ajoutez project_type
-      services_requests, // Ajoutez services_requests
-      selectedImages,
-    };
-
-
-    // Réinitialisez les valeurs du formulaire
-    setProjectDescription('');
-    setProjectType('');
-    setServicesRequests([]);
-    setSelectedImages([]); // Réinitialisez également les sélections des carrés dans le premier onglet
+  // Crée un objet formData avec les valeurs du formulaire
+  const formData = {
+    project_description, // Récupère la description du projet
+    project_type, // Récupère le type de projet
+    services_requests, // Récupère les demandes de services
+    selectedImages, // Récupère les images sélectionnées
   };
+
+  // Réinitialisez les valeurs du formulaire pour les vider
+  setProjectDescription(''); // Réinitialise la description du projet
+  setProjectType(''); // Réinitialise le type de projet
+  setServicesRequests([]); // Réinitialise les demandes de services
+  setSelectedImages([]); // Réinitialise également les sélections des carrés dans le premier onglet
+};
 
 
   // Rendu du composant 'Projet'
@@ -90,7 +99,7 @@ const Projet = () => {
       {/* Composant 'Tabs' pour gérer les onglets */}
       <Tabs activeKey={activeTab} onSelect={handleTabSelect} id="devis-tabs" className="blockInfo">
         {/* Onglet 1 */}
-        <Tab eventKey={0} title="Informations sur votre projet">
+        <Tab eventKey={0} title="Informations sur votre projet"> {/*Définit un onglet avec une clé unique (eventKey) égale à 0*/}
           {/* Contenu de l'onglet 1 */}
           <p className="paraDemande">Votre demande concerne : <span style={{ color: "red" }}>*</span></p>
           {/* Sélection des images carrées */}
@@ -111,15 +120,15 @@ const Projet = () => {
               <p className="paraSite3">Autre</p>
             </div>
           </div>
-          {/* Champ de texte pour spécifier la nature du site si 'Autre' est sélectionné */}
-          {selectedImages.includes(2) && (
-            <div>
+          {/* Champ de texte pour spécifier si 'Autre' est sélectionné */}
+          {selectedImages.includes(2) && (  // Vérifie si l'image avec l'index 2 est sélectionnée
+           <div>
               <p className='projetPara'>Veuillez préciser la nature de votre site :</p>
               <div className='champText'>
                 <input
                   type="text"
                   value={autreTexte}
-                  onChange={(e) => setAutreTexte(e.target.value)}
+                  onChange={(e) => setAutreTexte(e.target.value)} // Lorsque champ de texte change, met à jour l'état 'autreTexte'
                   placeholder="Si vous ne savez pas exactement, expliquez votre site en 1 phrase."
                   style={{ height: '50%', width: '50%' }}
                 />
@@ -128,7 +137,7 @@ const Projet = () => {
           )}
         </Tab>
         {/* Onglet 2 */}
-        <Tab eventKey={1} title="Informations sur votre demande">
+        <Tab eventKey={1} title="Informations sur votre demande">{/*Définit un onglet avec une clé unique (eventKey) égale à 1*/}
           {/* Contenu de l'onglet 2 */}
           <h3 style={{ padding: "10px" }}>
             Vous souhaitez :<span style={{ color: "red" }}>*</span>
@@ -199,17 +208,21 @@ const Projet = () => {
           </p>
         </Tab>
         {/* Onglet 3 */}
-        <Tab eventKey={2} title="Informations sur vous">
+        <Tab eventKey={2} title="Informations sur vous">{/*Définit un onglet avec une clé unique (eventKey) égale à 2*/}
           {/* Contenu de l'onglet 3 */}
-          {/* Composant 'ErrorMsg'*/}
-          <ErrorMsg projectType={project_type} servicesRequests={services_requests} />  {/* crée une instance "ErrorMsg" en lui passant la valeur "project_type".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
+           {/* Crée une instance "ErrorMsg" en lui passant la valeur "project_type, services".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
+          <ErrorMsg projectType={project_type} servicesRequests={services_requests} /> 
         </Tab>
       </Tabs>
       {/* Boutons pour naviguer entre les onglets */}
       <div className="buttonProjet">
+        {/* onglet précédent */}
+        {/* activeTab est égal à 0. Je clique sur ce bouton, l'onglet active est réduit de 1,permet de passer à l'onglet précédent.*/}
         <Button disabled={activeTab === 0} onClick={() => setActiveTab((prev) => prev - 1)}>
           Précédent
         </Button>
+        {/* onglet suivant */}
+        {/* Bouton est désactivé en fonction de la valeur de isNextButtonDisabled.Je clique sur ce bouton, l'onglet active est augmenté de 1, ce qui permet de passer à l'onglet suivant.*/}
         <Button disabled={isNextButtonDisabled} onClick={() => setActiveTab((prev) => prev + 1)}>
           Suivant
         </Button>

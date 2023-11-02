@@ -1,21 +1,30 @@
 import React from 'react';
 
-const InstaSvg = () => (
-  <a href="https://www.instagram.com/">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white" width="24" height="24">
-      {/* Le chemin SVG pour Instagram ici */}
-    </svg>
+// Composant InstaSvg qui affiche l'icône Instagram avec un lien
+const Insta = () => (
+  <a class="icon-linkedin" href="https://www.instagram.com/">
+    <img
+      src="/images/insta.png"
+      alt="Instagram"
+      width="24" 
+      height="24" 
+    />
   </a>
 );
 
-const LinkedinSvg = () => (
-  <a href="https://www.linkedin.com/">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
-      {/* Le chemin SVG pour LinkedIn ici */}
-    </svg>
+// Composant LinkedinSvg qui affiche l'icône LinkedIn avec un lien
+const Linkedin = () => (
+  <a class="icon-instagram" href="https://www.linkedin.com/">
+     <img
+      src="/images/link.png"
+      alt="Instagram"
+      width="24" 
+      height="24" 
+    />
   </a>
 );
 
+// Composant Apropos qui affiche les informations de la page "À propos" et les icônes
 function Apropos() {
   return (
     <div className="backApropos">
@@ -28,9 +37,9 @@ function Apropos() {
         j'ai décidé de me lancer en tant que freelance pour accompagner mes clients de A à Z dans 
         la digitalisation de leurs activités.
       </p>
-      <div className="containerSvg">
-        <InstaSvg />
-        <LinkedinSvg />
+      <div className="containerImage">
+        <Insta /> {/* Inclut l'icône Instagram */}
+        <Linkedin /> {/* Inclut l'icône LinkedIn */}
       </div>
     </div>
   );

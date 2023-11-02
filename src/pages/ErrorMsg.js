@@ -8,13 +8,13 @@ import Popup from './Popup';
 import './Popup.css';
 
 
-
-export default function ErrorMsg({ projectType, servicesRequests }) { // Composant ErrorMsg exporté par défaut, prenant "projectType" comme argument.
+// Composant ErrorMsg exporté par défaut, prenant "projectType,servicesRequests" comme argument.
+export default function ErrorMsg({ projectType, servicesRequests }) {
   // Ajoutez un état pour gérer l'affichage de la popup
   const [showPopup, setShowPopup] = useState(false); // Crée 'showPopup' à l'aide de useState et initialise sa valeur à 'false'.
-
-  const yupValidation = Yup.object().shape({ // "Yup.object()" crée un schéma de validation pour un objet. La méthode "shape({})" indique que l'objet doit respecter un certain schéma spécifié à l'intérieur des accolades.
-    first_name: Yup.string().required('Veuillez entrer votre prénom.').min(4, 'Le prénom doit contenir au moins 4 caractères.'), // méthode de Yup indique que la valeur de la propriété "firstName" doit être une chaîne de caractères. Si la propriété "firstName" est vide, une erreur sera renvoyée avec le message "Veuillez entrer votre prénom." 
+  // "Yup.object()" crée un schéma de validation. La méthode "shape({})" définir les règles de VALIDATION
+  const yupValidation = Yup.object().shape({
+    first_name: Yup.string().required('Veuillez entrer votre prénom.').min(4, 'Le prénom doit contenir au moins 4 caractères.'), // méthode Yup indique que la valeur de la propriété "firstName" doit être une chaîne de caractères. Si la propriété "firstName" est vide, une erreur sera renvoyée avec le message "Veuillez entrer votre prénom." 
     last_name: Yup.string().required('Veuillez entrer votre nom.').min(4, 'Le nom doit contenir au moins 4 caractères.'),
     company_name: Yup.string().required('Veuillez entrer le nom de votre entreprise/organisation.').min(4, 'Le nom de l\'entreprise/organisation doit contenir au moins 4 caractères.'),
     email: Yup.string().required('L\'identifiant de messagerie est obligatoire.')
@@ -23,7 +23,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
     website_url: Yup.string()
       .required('Veuillez entrer l\'URL de votre site.')
       .url("Veuillez entrer une URL valide."),   // Vérifie si la valeur du champ correspond à un format d'URL
-      project_description: Yup.string().required('Veuillez nous parler de votre projet.').min(8, 'La description du projet doit contenir au moins 8 caractères.'),
+    project_description: Yup.string().required('Veuillez nous parler de votre projet.').min(8, 'La description du projet doit contenir au moins 8 caractères.'),
   });
 
 
@@ -35,10 +35,10 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
 
   // ENVOI DU FORMULAIRE VIA L'API
   const baseURL = 'http://projetlaravel/api/estimates'; // URL de base
-  const method = 'POST'; // Définissez la méthode HTTP que vous souhaitez utiliser (exemple, POST)
+  const method = 'POST'; // Définissez la méthode HTTP (POST)
 
   // fonction pour soumettre le formulaire
-  async function onSubmit(data) {
+  async function onSubmit(data) { // Fonction asynchrone pour gérer la soumission du formulaire
     try {
       let response;
       // Utilisation d'une instruction switch pour gérer différentes méthodes HTTP
@@ -47,26 +47,28 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
           data.project_type = projectType; // Attribue la valeur de "projectType" à la propriété "project_type" de l'objet "data"
           data.services_requests = servicesRequests.toString(); // Convertit l'objet servicesRequests en une chaîne de caractères et l'assigne à la variable data.services_requests 
           // Effectue une requête POST vers l'URL de base avec les données et un en-tête CSRF
-         console.log(data);
-         response = await axios.post(baseURL, data, {
-            headers: {
+          console.log(data);// Affiche les données du formulaire dans la console
+          response = await axios.post(baseURL, data, { // Effectue une requête POST vers l'URL de base avec les données du formulaire
+            headers: {// un en-tête CSRF (Cross-Site Request Forgery) pour renforcer la sécurité de la requête
               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             },
           });
-          break;
+          break; // Sort du switch lorsque la méthode est 'POST'
         case 'PUT':
           response = await axios.put(baseURL, data); // Effectue une requête PUT avec les données à l'URL de base
-          break;
+          break; // Sort du switch lorsque la méthode est 'PUT'
         case 'DELETE':
           response = await axios.delete(baseURL, { data }); // Effectue une requête DELETE avec les données à l'URL de base
-          break;
+          break; // Sort du switch lorsque la méthode est 'DELETE'
         default:
           console.error('Méthode HTTP non prise en charge'); // Affiche une erreur si la méthode n'est pas reconnue
           return; // Sort de la fonction
       } // Après avoir traité la soumission avec succès, réinitialisez le formulaire
       reset(); // Réinitialise le formulaire en utilisant la fonction reset de react-hook-form
       setShowPopup(true); // Pour afficher le popup lorsque showPopup est true
-    } catch (error) {
+    } 
+    catch (error) {
+      // Gestion des erreurs en cas d'échec de la soumission (VIDE)
     }
   }
 
@@ -76,10 +78,12 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
       <form onSubmit={handleSubmit(onSubmit)}> {/* Lorsqu'il est soumis, la fonction handleSubmit(onSubmit) sera appelée. */}
         <div className="form-group" style={{ width: '500px' }}>
           <label>Prénom</label>
-          <input
+          <input // balise <input> Créer un champ de saisie dans un formulaire web.
             name="first_name"
             type="text"
-            className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}  // Le code suivant utilise une notation de template string en JavaScript pour créer une classe dynamique pour un élément de formulaire en fonction de la présence d'erreurs sur le champ "firstName".
+            className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
+              // Définit les classes CSS du champ de saisie. 'form-control' est toujours présente.
+              // 'is-invalid' est ajoutée si des erreurs existent pour le champ "first_name".  
             {...register('first_name')}  // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.first_name?.message}</div>
@@ -90,7 +94,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
             name="last_name"
             type="text"
             className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
-            {...register('last_name')}
+            {...register('last_name')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.last_name?.message}</div>
         </div>
@@ -100,7 +104,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
             name="company_name"
             type="text"
             className={`form-control ${errors.company_name ? 'is-invalid' : ''}`}
-            {...register('company_name')}
+            {...register('company_name')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.company_name?.message}</div>
         </div>
@@ -110,7 +114,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
             name="email"
             type="text"
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-            {...register('email')}
+            {...register('email')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.email?.message}</div>
         </div>
@@ -120,7 +124,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
             name="phone_number"
             type="text"
             className={`form-control ${errors.phone_number ? 'is-invalid' : ''}`}
-            {...register('phone_number')}
+            {...register('phone_number')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.phone_number?.message}</div>
         </div>
@@ -130,7 +134,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
             name="website_url"
             type="text"
             className={`form-control ${errors.website_url ? 'is-invalid' : ''}`}
-            {...register('website_url')}
+            {...register('website_url')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.website_url?.message}</div>
         </div>
@@ -139,17 +143,17 @@ export default function ErrorMsg({ projectType, servicesRequests }) { // Composa
           <textarea
             name="project_description"
             className={`form-control ${errors.project_description ? 'is-invalid' : ''}`} style={{ height: '150px' }}
-            {...register('project_description')}
+            {...register('project_description')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.project_description?.message}</div>
         </div>
         <div className="mt-3">
-          <button type="submit" className="btn btn-primary"> Envoyer </button> {/* l'attribut type="submit" indique que le bouton est utilisé pour soumettre un formulaire */}
+          <button type="submit" className="btn btn-primary"> Envoyer </button>
         </div>
-         {/* Afficher la popup si showPopup est true */}
-         {/* composante <Popup> 2 propriétés:'showPopup'et'onClose'. La propriété 'showpopu' affiche tandis que 
-         'onClose' une fonction qui sera appelée lorsque la popup est fermée*/}
-         <Popup showPopup={showPopup} onClose={() => setShowPopup(false)} />
+        {/* Afficher la popup si showPopup est true */}
+        <Popup 
+        showPopup={showPopup} // La propriété 'showPopup' contrôle l'affichage de la popup en fonction de la valeur de 'showPopup'. 
+        onClose={() => setShowPopup(false)} /> {/* Définit la variable showPopup à false, pour masquer la popup (fermé)*/}
       </form>
     </div>
   );

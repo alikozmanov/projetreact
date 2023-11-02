@@ -107,64 +107,81 @@
   }
   
 
-  /* logo */
+  /* logo SLIDER */
   .logo_slider {
     width: 100%;
     height: 50%;
   }
   
- 
-  /* services */
-  .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .block {
-    width: 27%;
-    height: 240px;
-    background-color: #f2f2f2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 10px;
-    padding: 10px;
-  }
-  
-  .icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
-  
-  .title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .paragraph {
-    font-size: 14px;
-  } 
-  .block:hover
-  {
-    opacity: 1.0;
-    background-color: rgb(189, 189, 189);
-  }
 
-  /* fleche service  */
-  .fa-arrow-right
-  {
+ /* Services h1,h2,p */
+.classh1 {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 15px;
+}
+
+.classh2 {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 15px;
+}
+ /* services */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.block {
+  width: 27%;
+  height: 240px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.block-content {
+  /* Conteneur pour le texte, l'icône et la flèche */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.fa-arrow-right {
   opacity: 0;
   transition: opacity 300ms;
-  }
+  position: absolute;
+  bottom: 10px; /* Ajustez la position verticale de la flèche en fonction de votre mise en page */
+  left: 50%; /* Centrez horizontalement la flèche */
+  transform: translateX(-50%); /* Centrez horizontalement la flèche */
+}
 
-  .block:hover .fa-arrow-right
-  {
-    opacity: 1.0;
-  }
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.paragraph {
+  font-size: 14px;
+}
+
+/* Lorsque vous survolez le bloc, la flèche apparaîtra */
+.block:hover .fa-arrow-right {
+  opacity: 1.0;
+}
 
 
 
@@ -362,5 +379,10 @@
 }
 
 
+/* A propos */
+.containerImage {
+  display: flex;
+  justify-content: space-between;
+}
 
 }
