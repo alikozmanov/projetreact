@@ -24,7 +24,7 @@ function Nav() {
           {/* Logo de la navigation */}
           <div className="navbar_logo">
             <img
-              src="https://oguzdonmez.com/wp-content/uploads/2019/01/logo-blanc.png"
+              src="/images/logo-blanc.jpeg"
               alt="Logo"
               width="200"
             />

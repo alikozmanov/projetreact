@@ -6,13 +6,15 @@ import ErrorMsg from './ErrorMsg'; // Importe ErrorMsg depuis le fichier ErrorMs
 
 // composant fonctionnel appelé 'Projet'.
 const Projet = () => {
-  // Utilisation du hook useState pour gérer l'état du composant
+  // Utilisation du hook "useState" pour gérer l'état du composant
   const [activeTab, setActiveTab] = useState(0);  // // Déclare une variable d'état 'activeTab' avec une valeur initiale de 0. Cette variable sera utilisée pour suivre l'onglet actif sélectionné dans le composant.
   const [selectedImages, setSelectedImages] = useState([]); // Déclare une variable d'état 'selectedImages' avec une valeur initiale d'un tableau vide. Cette variable sera utilisée pour stocker les images sélectionnées dans le projet.
-  const [autreTexte, setAutreTexte] = useState(''); // Déclare une variable d'état 'autreTexte' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker un texte supplémentaire lié au projet. 
+  const [other_text, setOtherText] = useState(''); // Déclare une variable d'état 'autreTexte' avec une valeur initiale d'une chaîne vide.
   const [project_description, setProjectDescription] = useState(''); // Déclare une variable d'état 'projectDescription' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker une description du projet. 
   const [project_type, setProjectType] = useState('');// Déclarez la variable d'état projectType et le setter setProjectType dans votre composant
   const [services_requests, setServicesRequests] = useState([]);
+  
+
 
 
   // Fonction pour gérer le changement d'onglet (0,1,2)
@@ -22,73 +24,77 @@ const Projet = () => {
 
 
   // Onglet 1 : fonction pour gérer le clic sur une image carrée 
-const handleImageClick = (index) => {
-  // Vérifie si l'image est déjà sélectionnée
-  const isSelected = selectedImages.includes(index);
-  if (isSelected) {
-    // Si l'image est déjà sélectionnée, la désélectionne
-    setSelectedImages(selectedImages.filter((item) => item !== index));
-  } else {
-    // Si l'image n'est pas sélectionnée, l'ajoute à la liste des sélections
-    setSelectedImages([...selectedImages, index]);
-  }
+  const handleImageClick = (index) => {
+    // Vérifie si l'image est déjà sélectionnée
+    const isSelected = selectedImages.includes(index);
+    if (isSelected) {
+      // Si l'image est déjà sélectionnée, la désélectionne
+      setSelectedImages(selectedImages.filter((item) => item !== index));
+    } else {
+      // Si l'image n'est pas sélectionnée, l'ajoute à la liste des sélections
+      setSelectedImages([...selectedImages, index]);
+    }
 
-  // Mettre à jour project_type en fonction de la sélection de l'image carrée dans l'onglet 1
-  if (index === 0) {
-    // Si l'image sélectionnée a un index de 0, définir le type de projet comme "Un Site Vitrine"
-    setProjectType("Un Site Vitrine");
-  } else if (index === 1) {
-    // Si l'image sélectionnée a un index de 1, définir le type de projet comme "Un Site E-commerce"
-    setProjectType("Un Site E-commerce");
-  } else if (index === 2) {
-    // Si l'image sélectionnée a un index de 2, définir le type de projet comme "Autre"
-    setProjectType("Autre");
-  }
-};
+    // Mettre à jour project_type en fonction de la sélection de l'image carrée dans l'onglet 1
+    if (index === 0) {
+      // Si l'image sélectionnée a un index de 0, définir le type de projet comme "Un Site Vitrine"
+      setProjectType("Un Site Vitrine");
+    } else if (index === 1) {
+      // Si l'image sélectionnée a un index de 1, définir le type de projet comme "Un Site E-commerce"
+      setProjectType("Un Site E-commerce");
+    } else if (index === 2) {
+      // Si l'image sélectionnée a un index de 2, définir le type de projet comme "Autre"
+      setProjectType("Autre");
+    }
+  };
 
 
-// Onglet 2 : cocher une case
-const handleServiceRequestChange = (service) => {
-  // Créez une copie de la liste des services demandés
-  const updatedServices = [...services_requests];
+  // Onglet 2 : cocher une case
+  const handleServiceRequestChange = (service) => {
+    // Créez une copie de la liste des services demandés
+    const updatedServices = [...services_requests];
 
-  // Trouvez l'indice du service dans la liste
-  const serviceIndex = updatedServices.indexOf(service);
+    // Trouvez l'indice du service dans la liste
+    const serviceIndex = updatedServices.indexOf(service);
 
-  if (serviceIndex !== -1) {
-    // Si le service est déjà dans la liste, retirez-le
-    updatedServices.splice(serviceIndex, 1);
-  } else {
-    // Sinon, ajoutez-le à la liste
-    updatedServices.push(service);
-  }
+    if (serviceIndex !== -1) {
+      // Si le service est déjà dans la liste, retirez-le
+      updatedServices.splice(serviceIndex, 1);
+    } else {
+      // Sinon, ajoutez-le à la liste
+      updatedServices.push(service);
+    }
 
-  // Mettez à jour l'état des services demandés
-  setServicesRequests(updatedServices);
-};
+    // Mettez à jour l'état des services demandés
+    setServicesRequests(updatedServices);
+  };
 
 
   // Vérifier si le bouton 'Suivant' doit être désactivé (l'onglet 3)
-  const isNextButtonDisabled = (selectedImages.length === 0 && !autreTexte) || activeTab === 2;
+  const isNextButtonDisabled = (selectedImages.length === 0 && !other_text) || activeTab === 2;
 
-// Fonction pour soumettre le formulaire
-const handleSubmit = (e) => {
-  e.preventDefault(); // Empêche la soumission du formulaire par défaut
+  // Fonction pour soumettre le formulaire
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Empêche la soumission du formulaire par défaut
 
-  // Crée un objet formData avec les valeurs du formulaire
-  const formData = {
-    project_description, // Récupère la description du projet
-    project_type, // Récupère le type de projet
-    services_requests, // Récupère les demandes de services
-    selectedImages, // Récupère les images sélectionnées
+    // Crée un objet formData avec les valeurs du formulaire
+    const formData = {
+      project_description, // Récupère la description du projet
+      project_type, // Récupère le type de projet
+      services_requests, // Récupère les demandes de services
+      selectedImages, // Récupère les images sélectionnées
+      other_text,
+    };
+    console.log('Données avant envoi :', formData); // Affiche les données du formulaire dans la console pour le débogage
+
+
+    // Réinitialisez les valeurs du formulaire pour les vider
+    setProjectDescription(''); // Réinitialise la description du projet
+    setProjectType(''); // Réinitialise le type de projet
+    setServicesRequests([]); // Réinitialise les demandes de services
+    setSelectedImages([]); // Réinitialise également les sélections des carrés dans le premier onglet
+    setOtherText(''); // Réinitialisez également la variable d'état "other_text" pour vider le champ de texte
   };
-
-  // Réinitialisez les valeurs du formulaire pour les vider
-  setProjectDescription(''); // Réinitialise la description du projet
-  setProjectType(''); // Réinitialise le type de projet
-  setServicesRequests([]); // Réinitialise les demandes de services
-  setSelectedImages([]); // Réinitialise également les sélections des carrés dans le premier onglet
-};
 
 
   // Rendu du composant 'Projet'
@@ -105,30 +111,30 @@ const handleSubmit = (e) => {
           {/* Sélection des images carrées */}
           <div className="containerSquare">
             <div className={`square ${selectedImages.includes(0) ? 'selected' : ''}`} onClick={() => handleImageClick(0)}>
-              <img className='imgSquare' src="https://oguzdonmez.com/wp-content/uploads/2021/01/website.jpg" title="Un Site Vitrine" />
+              <img className='imgSquare' src="/images/site-web-vitrine.jpg" title="Un Site Vitrine" />
               {selectedImages.includes(0) && <span className="checkMark">✓</span>}
               <p className="paraSite1">Un Site Vitrine</p>
             </div>
             <div className={`square ${selectedImages.includes(1) ? 'selected' : ''}`} onClick={() => handleImageClick(1)}>
-              <img className='imgSquare' src="https://oguzdonmez.com/wp-content/uploads/2021/04/magasin-carte-credit-coffrets-cadeaux-illustration-acheteurs_1262-18980-1.jpg" title="Un Site e-commerce" />
+              <img className='imgSquare' src="/images/Ecommerce.png" title="Un Site e-commerce" />
               {selectedImages.includes(1) && <span className="checkMark">✓</span>}
               <p className="paraSite2">Un Site E-commerce</p>
             </div>
             <div className={`square ${selectedImages.includes(2) ? 'selected' : ''}`} onClick={() => handleImageClick(2)}>
-              <img className='imgSquare' src="https://oguzdonmez.com/wp-content/uploads/2021/04/unnamed.png" title="Autre" />
+              <img className='imgSquare' src="/images/ordinateur.jpeg" title="Autre" />
               {selectedImages.includes(2) && <span className="checkMark">✓</span>}
               <p className="paraSite3">Autre</p>
             </div>
           </div>
           {/* Champ de texte pour spécifier si 'Autre' est sélectionné */}
           {selectedImages.includes(2) && (  // Vérifie si l'image avec l'index 2 est sélectionnée
-           <div>
+            <div>
               <p className='projetPara'>Veuillez préciser la nature de votre site :</p>
               <div className='champText'>
                 <input
                   type="text"
-                  value={autreTexte}
-                  onChange={(e) => setAutreTexte(e.target.value)} // Lorsque champ de texte change, met à jour l'état 'autreTexte'
+                  value={other_text}
+                  onChange={(e) => setOtherText(e.target.value)} // Lorsque champ de texte change, met à jour l'état 'autreTexte'
                   placeholder="Si vous ne savez pas exactement, expliquez votre site en 1 phrase."
                   style={{ height: '50%', width: '50%' }}
                 />
@@ -210,8 +216,12 @@ const handleSubmit = (e) => {
         {/* Onglet 3 */}
         <Tab eventKey={2} title="Informations sur vous">{/*Définit un onglet avec une clé unique (eventKey) égale à 2*/}
           {/* Contenu de l'onglet 3 */}
-           {/* Crée une instance "ErrorMsg" en lui passant la valeur "project_type, services".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
-          <ErrorMsg projectType={project_type} servicesRequests={services_requests} /> 
+          {/* Crée une instance "ErrorMsg" en lui passant la valeur "project_type, services".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
+          <ErrorMsg
+            projectType={project_type}
+            servicesRequests={services_requests}
+            otherText={other_text}
+          />
         </Tab>
       </Tabs>
       {/* Boutons pour naviguer entre les onglets */}

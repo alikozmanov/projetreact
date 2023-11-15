@@ -88,6 +88,9 @@ a {
 }
 
 /* apropos */
+.backApropos {
+  height: 80vh; /* Vous pouvez essayer d'utiliser 80% à la place */
+}
 .center {
   text-align: center;
 }
@@ -99,7 +102,7 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 80vh;
+  height: auto; 
   color: white;
 }
 
@@ -130,6 +133,19 @@ a {
 .metier {
   color: rgb(187, 187, 187);
   font-style: italic;
+}
+/* Apropos animation */
+.animatedProfile {
+  /* Définissez une transition pour la transformation (scale) et l'opacité */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Lorsque l'image est survolée, appliquez ces styles */
+.animatedProfile:hover {
+  /* Agrandissez légèrement l'image avec une échelle de 1.1 */
+  transform: scale(1.1);
+  /* Réduisez légèrement l'opacité à 0.8 pour un effet subtil */
+  opacity: 0.8;
 }
 
 
@@ -209,7 +225,8 @@ a {
 
 .paraSite1 {
   padding: 6px;
-  color: rgb(60, 187, 174);
+  color: rgb(118, 117, 117);
+
 }
 
 .paraSite2 {
@@ -219,7 +236,7 @@ a {
 
 .paraSite3 {
   padding: 6px;
-  color: rgb(118, 117, 117);
+  color: rgb(60, 187, 174);
 }
 
 .imgSquare {

@@ -1,6 +1,5 @@
+
 import React, { useState } from "react";
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importation de FontAwesome pour afficher des icônes
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône de la flèche gauche et droite
 
@@ -29,28 +28,28 @@ function Accueil() {
   const slides = [
     {
       // Première diapositive
-      image: "/images/goku.jpeg",
+      image: "/images/image1.png",
       title: "Titre de l'image 1",
-      logo: "images/logo.jpeg",
-      text: "goku",
+      logo: "images/logo.png",
+      text: "sous-titre 1",
       textColor: "white",
       background: "red",
     },
     {
       // Deuxième diapositive
-      image: "/images/songohan.jpeg",
+      image: "/images/image2.png",
       title: "Titre de l'image 2",
-      logo: "images/amazon.jpeg",
-      text: "songohan",
+      logo: "images/amazon.png",
+      text: "sous-titre 2",
       textColor: "white",
       background: "green",
     },
     {
       // Troisième diapositive
-      image: "/images/songoten.jpeg",
+      image: "/images/image3.png",
       title: "Titre de l'image 3",
-      logo: "images/youtube.jpeg",
-      text: "songoten",
+      logo: "images/youtube.png",
+      text: "sous-titre 3",
       textColor: "white",
       background: "blue",
     },

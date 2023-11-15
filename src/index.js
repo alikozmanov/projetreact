@@ -2,7 +2,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-/* La ligne suivante pour le css (Projet.js (Tabs)) */ 
+
+/* La ligne pour le css (Projet.js (Tabs)) */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import de style CSS (App.css)
@@ -31,7 +32,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Route principale avec les composant : */}
-          <Route path="/" element={<Nav />}>
+        <Route path="/" element={<Nav />}>
           <Route index element={<Accueil />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/Apropos" element={<Apropos />} />

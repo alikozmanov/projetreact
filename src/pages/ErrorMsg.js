@@ -8,8 +8,9 @@ import Popup from './Popup';
 import './Popup.css';
 
 
+
 // Composant ErrorMsg exporté par défaut, prenant "projectType,servicesRequests" comme argument.
-export default function ErrorMsg({ projectType, servicesRequests }) {
+export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
   // Ajoutez un état pour gérer l'affichage de la popup
   const [showPopup, setShowPopup] = useState(false); // Crée 'showPopup' à l'aide de useState et initialise sa valeur à 'false'.
   // "Yup.object()" crée un schéma de validation. La méthode "shape({})" définir les règles de VALIDATION
@@ -40,12 +41,18 @@ export default function ErrorMsg({ projectType, servicesRequests }) {
   // fonction pour soumettre le formulaire
   async function onSubmit(data) { // Fonction asynchrone pour gérer la soumission du formulaire
     try {
+      if (otherText === null || otherText === undefined) {
+        console.error("La valeur de 'otherText' ne peut pas être nulle");
+        return;
+      }
+      console.log("Le type de 'otherText' est :", typeof otherText);
       let response;
       // Utilisation d'une instruction switch pour gérer différentes méthodes HTTP
       switch (method) {
         case 'POST':
           data.project_type = projectType; // Attribue la valeur de "projectType" à la propriété "project_type" de l'objet "data"
           data.services_requests = servicesRequests.toString(); // Convertit l'objet servicesRequests en une chaîne de caractères et l'assigne à la variable data.services_requests 
+          data.other_text = otherText;
           // Effectue une requête POST vers l'URL de base avec les données et un en-tête CSRF
           console.log(data);// Affiche les données du formulaire dans la console
           response = await axios.post(baseURL, data, { // Effectue une requête POST vers l'URL de base avec les données du formulaire
@@ -66,7 +73,7 @@ export default function ErrorMsg({ projectType, servicesRequests }) {
       } // Après avoir traité la soumission avec succès, réinitialisez le formulaire
       reset(); // Réinitialise le formulaire en utilisant la fonction reset de react-hook-form
       setShowPopup(true); // Pour afficher le popup lorsque showPopup est true
-    } 
+    }
     catch (error) {
       // Gestion des erreurs en cas d'échec de la soumission (VIDE)
     }
@@ -82,8 +89,8 @@ export default function ErrorMsg({ projectType, servicesRequests }) {
             name="first_name"
             type="text"
             className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
-              // Définit les classes CSS du champ de saisie. 'form-control' est toujours présente.
-              // 'is-invalid' est ajoutée si des erreurs existent pour le champ "first_name".  
+            // Définit les classes CSS du champ de saisie. 'form-control' est toujours présente.
+            // 'is-invalid' est ajoutée si des erreurs existent pour le champ "first_name".  
             {...register('first_name')}  // Lie le champ de saisie au formulaire en utilisant la méthode register 
           />
           <div className="invalid-feedback">{errors.first_name?.message}</div>
@@ -151,9 +158,9 @@ export default function ErrorMsg({ projectType, servicesRequests }) {
           <button type="submit" className="btn btn-primary"> Envoyer </button>
         </div>
         {/* Afficher la popup si showPopup est true */}
-        <Popup 
-        showPopup={showPopup} // La propriété 'showPopup' contrôle l'affichage de la popup en fonction de la valeur de 'showPopup'. 
-        onClose={() => setShowPopup(false)} /> {/* Définit la variable showPopup à false, pour masquer la popup (fermé)*/}
+        <Popup
+          showPopup={showPopup} // La propriété 'showPopup' contrôle l'affichage de la popup en fonction de la valeur de 'showPopup'. 
+          onClose={() => setShowPopup(false)} /> {/* Définit la variable showPopup à false, pour masquer la popup (fermé)*/}
       </form>
     </div>
   );

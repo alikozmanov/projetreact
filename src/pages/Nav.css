@@ -93,8 +93,10 @@
   }
   
   .slider_image {
-    object-fit: contain;
-    width: 50%;
+    width: 100%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
   }
   
   .slider_text {
@@ -311,6 +313,11 @@
   .logo_slider {
       display: none;
   }
+  .slider_image {
+    object-fit: cover; /* Garantit que l'image couvre tout le conteneur sans déformation */
+    width: 100%; /* Ajuste la largeur pour remplir la largeur du conteneur parent */
+    max-height: 300px; /* Fixe la hauteur maximale de l'image */
+  }
 
 
 
@@ -365,7 +372,7 @@
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* Ajuste l'élément pour qu'il s'adapte à l'intérieur de son conteneur en préservant son rapport hauteur/largeur d'origine */
+  object-fit: cover;  /* Ajuste l'élément pour qu'il s'adapte à l'intérieur de son conteneur en couvrant entièrement et sans déformation */
 }
 
 .project-container {
@@ -384,5 +391,9 @@
   display: flex;
   justify-content: space-between;
 }
+.backApropos {
+  height: auto; /* Ajoutez d'autres styles nécessaires pour les écrans plus petits */
+}
+
 
 }

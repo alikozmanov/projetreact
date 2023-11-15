@@ -29,7 +29,7 @@ function Apropos() {
   return (
     <div className="backApropos">
       <h1 className="aPropos">Qui suis-je ?</h1>
-      <img className="imgProfile" src="/images/img.jpeg" alt="Photo de profil" />
+      <img className="imgProfile animatedProfile" src="/images/img.jpeg" alt="Photo de profil" />
       <p className="prenom">Oguz Donmez</p>
       <p className="metier">Développeur Web</p>
       <p className="presentation">
