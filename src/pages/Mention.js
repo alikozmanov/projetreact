@@ -5,19 +5,17 @@ const Mention = () => {
     <footer className="footer-Mention">
       <div>
         <p><strong>Hébergeur :</strong></p>
-        <p><strong>1&1 IONOS SARL</strong><br />
-        <p><strong>Siège social :</strong> 7 place de la Gare, 57201 SARREGUEMINES – France<br /></p>  
-        <p><strong>SIREN :</strong> 431 303 775<br /></p>
-        <p><strong>SIRET :</strong> 43130377500016<br /></p>
+        <p><strong>1&1 IONOS SARL</strong></p>
+        <p><strong>Siège social :</strong> 7 place de la Gare, 57201 SARREGUEMINES – France</p>  
+        <p><strong>SIREN :</strong> 431 303 775</p>
+        <p><strong>SIRET :</strong> 43130377500016</p>
         <p><strong>Capital social :</strong> 100 000,00 €</p>
-        </p>
       </div>
 
       <div>
         <p><strong>Système de gestion de contenu :</strong></p>
         <p>
-          Ce site est créé sous WordPress et est mis à jour à chaque nouvelle version. WordPress est un système de gestion 
-          de contenu (CMS) gratuit et libre.
+          Ce site est créé sous React.
         </p>
       </div>
 
@@ -36,3 +34,4 @@ const Mention = () => {
 };
 
 export default Mention;
+

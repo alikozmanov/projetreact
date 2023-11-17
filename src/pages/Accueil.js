@@ -22,7 +22,7 @@ function Accueil() {
 
 
   // Déclenche la fonction `handleNextSlide` toutes les 4 secondes (images)
-  setTimeout(handleNextSlide, 4000);
+  setTimeout(handleNextSlide, 100000000);
 
   // Variable 'slides' qui contient un tableau de données 
   const slides = [
@@ -77,11 +77,12 @@ function Accueil() {
                       <button className="slider_button previous" onClick={handlePrevSlide}>
                         <FontAwesomeIcon icon={faArrowLeft} /> {/* Affiche une icône (flèche gauche) en utilisant FontAwesome */}
                         Précédent
-                      </button> 
+                      </button>
                       {/* Affiche le numéro de la diapositive actuelle et (index + 1) suivi du nombre total de diapositives */}
                       <div className="number">{`${index + 1}/${slides.length}`}</div> {/* nombre d'élémenets du tableau 'slides'*/}
-                      <button className="slider_button next" onClick={handleNextSlide}>
-                        Suivant <FontAwesomeIcon icon={faArrowRight} /> {/* Affiche une icône (flèche droite) en utilisant FontAwesome */}
+                      <button className="slider_button next nextButton" onClick={handleNextSlide}>
+                        <FontAwesomeIcon icon={faArrowRight} /> {/* Affiche une icône (flèche droite) en utilisant FontAwesome */}
+                        Suivant
                       </button>
                     </div>
 
@@ -89,7 +90,7 @@ function Accueil() {
                 </>
               )}
               {/* Ferme le fragment React */}
-            </React.Fragment> 
+            </React.Fragment>
           ))}
         </div>
       </div>
