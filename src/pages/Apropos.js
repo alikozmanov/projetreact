@@ -27,7 +27,7 @@ const Linkedin = () => (
 // Composant Apropos qui affiche les informations de la page "À propos" et les icônes
 function Apropos() {
   return (
-    <div className="backApropos">
+    <div className="backApropos apropos-container">
       <h1 className="aPropos">Qui suis-je ?</h1>
       <img className="imgProfile animatedProfile" src="/images/img.jpeg" alt="Photo de profil" />
       <p className="prenom">Oguz Donmez</p>

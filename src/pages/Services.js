@@ -13,7 +13,7 @@ const Block = ({ icon, title, paragraph }) => {
       <div className="icon">{icon}</div> {/* Affiche l'icône passée en tant que propriété "icon" */}
       <h3 className="title">{title}</h3> {/* Affiche le titre passé en tant que propriété "title" */}
       <p className="paragraph">{paragraph}</p> {/* Affiche le paragraphe passé en tant que propriété "paragraph" */}
-      <FontAwesomeIcon icon={faArrowRight} size="sm" /> {/* Flèche droite de taille "m" */}
+      <FontAwesomeIcon icon={faArrowRight} className='flecheDroite' size="sm" /> {/* Flèche droite de taille "m" */}
     </div>
   );
 };

@@ -81,11 +81,10 @@ function Accueil() {
                       {/* Affiche le numéro de la diapositive actuelle et (index + 1) suivi du nombre total de diapositives */}
                       <div className="number">{`${index + 1}/${slides.length}`}</div> {/* nombre d'élémenets du tableau 'slides'*/}
                       <button className="slider_button next nextButton" onClick={handleNextSlide}>
-                        <FontAwesomeIcon icon={faArrowRight} /> {/* Affiche une icône (flèche droite) en utilisant FontAwesome */}
                         Suivant
+                        <FontAwesomeIcon icon={faArrowRight} className="custom-arrow-right" /> {/* Affiche une icône (flèche droite) en utilisant FontAwesome */}
                       </button>
                     </div>
-
                   </div>
                 </>
               )}

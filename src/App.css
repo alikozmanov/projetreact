@@ -60,7 +60,9 @@ a {
   background-color: black;
   color: white;
   height: 50px;
-  padding-left: 100px;
+  padding-top: 5px;
+  padding-left: 20px; 
+  padding-right: 20px;
 }
 
 .mentions-legales {
@@ -89,7 +91,7 @@ a {
 
 /* apropos */
 .backApropos {
-  height: 80vh; /* Vous pouvez essayer d'utiliser 80% à la place */
+  height: 80vh;
 }
 .center {
   text-align: center;
@@ -192,11 +194,13 @@ a {
 .h1Projet {
   text-align: center;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .paraProjet {
   text-align: center;
   padding-top: 20px;
+  padding-bottom: 25px;
   font-size: 20px;
 }
 
@@ -242,7 +246,7 @@ a {
 .imgSquare {
   height: 160px;
   width: 277px;
-  position: relative;
+
 }
 
 .buttonProjet {

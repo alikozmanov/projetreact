@@ -50,7 +50,7 @@
 }
 
 /* Accueil/Slider */
-.slider {
+  .slider {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,18 +105,20 @@
     flex-direction: column;
     justify-content: space-between;
     flex-basis: 40%;
+    position: relative;
   }
     
   .slider_text h2 {
     padding-top: 15px;
     font-size: 3vw; /* taille de police relative */
   }
-  
-
   /* logo SLIDER */
   .logo_slider {
     width: 100%;
     height: 50%;
+  }
+  .custom-arrow-right {
+    margin-left: 5px; 
   }
   
 
@@ -126,19 +128,17 @@
   font-size: 18px;
   padding-top: 15px;
 }
-
 .classh2 {
   text-align: center;
   font-size: 40px;
   padding-top: 15px;
 }
- /* services */
 .services {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  padding-bottom: 15px;
 }
-
 .block {
   width: 27%;
   height: 240px;
@@ -151,8 +151,9 @@
   margin: 10px;
   padding: 10px;
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
 .block-content {
   /* Conteneur pour le texte, l'icône et la flèche */
   display: flex;
@@ -164,8 +165,7 @@
   font-size: 40px;
   margin-bottom: 10px;
 }
-
-.fa-arrow-right {
+.flecheDroite {
   opacity: 0;
   transition: opacity 300ms;
   position: absolute;
@@ -173,17 +173,14 @@
   left: 50%; /* Centrez horizontalement la flèche */
   transform: translateX(-50%); /* Centrez horizontalement la flèche */
 }
-
 .title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 .paragraph {
   font-size: 14px;
 }
-
 /* Lorsque vous survolez le bloc, la flèche apparaîtra */
 .block:hover .fa-arrow-right {
   opacity: 1.0;
@@ -399,5 +396,11 @@
   height: auto; /* Ajoutez d'autres styles nécessaires pour les écrans plus petits */
 }
 
+
+/* Service */
+.block {
+  width: 45%; /* Ajustez la largeur pour afficher en 2 colonnes */
+  margin: 5px;
+}
 
 }

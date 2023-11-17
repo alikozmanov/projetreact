@@ -209,8 +209,8 @@ const Projet = () => {
             <span style={{ marginLeft: "10px" }}>Un logo pour votre site</span>
           </label>
           <br />
-          <p style={{ padding: "20px", textAlign: "left", color: "green" }}>
-            Vous pouvez choisir plusieurs options si vous le souhaitez.
+          <p style={{ padding: "20px", textAlign: "left", color: "green", paddingTop: "10px" }}>
+            * Vous pouvez choisir plusieurs options si vous le souhaitez.
           </p>
         </Tab>
         {/* Onglet 3 */}
