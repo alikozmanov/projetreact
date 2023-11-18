@@ -61,7 +61,7 @@ a {
   color: white;
   height: 50px;
   padding-top: 5px;
-  padding-left: 20px; 
+  padding-left: 20px;
   padding-right: 20px;
 }
 
@@ -93,6 +93,7 @@ a {
 .backApropos {
   height: 80vh;
 }
+
 .center {
   text-align: center;
 }
@@ -104,7 +105,7 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: auto; 
+  height: auto;
   color: white;
 }
 
@@ -136,6 +137,7 @@ a {
   color: rgb(187, 187, 187);
   font-style: italic;
 }
+
 /* Apropos animation */
 .animatedProfile {
   /* Définissez une transition pour la transformation (scale) et l'opacité */
@@ -227,10 +229,16 @@ a {
   align-items: center;
 }
 
+/* Animation de transition 3 carrés ( site vitrine, site E-commerce, Autre ) */
+.square:hover {
+  transform: scale(1.05);
+  /* Agrandit légèrement le carré au survol */
+  transition: transform 0.3s ease-in-out;
+}
+
 .paraSite1 {
   padding: 6px;
   color: rgb(118, 117, 117);
-
 }
 
 .paraSite2 {
@@ -244,9 +252,12 @@ a {
 }
 
 .imgSquare {
-  height: 160px;
-  width: 277px;
-
+  height: 100%;
+  /* hauteur à 100%  */
+  width: 100%;
+  /* largeur à 100%  */
+  object-fit: cover;
+  /* couvrir entièrement le conteneur, sans déformer l'image */
 }
 
 .buttonProjet {
@@ -255,6 +266,7 @@ a {
   padding-top: 20px;
   padding: 20px;
 }
+
 
 /* Projet Autre */
 .projetPara {

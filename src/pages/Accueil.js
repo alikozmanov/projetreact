@@ -22,7 +22,7 @@ function Accueil() {
 
 
   // Déclenche la fonction `handleNextSlide` toutes les 4 secondes (images)
-  setTimeout(handleNextSlide, 100000000);
+  setTimeout(handleNextSlide, 4000);
 
   // Variable 'slides' qui contient un tableau de données 
   const slides = [
