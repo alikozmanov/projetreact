@@ -229,11 +229,10 @@ a {
   align-items: center;
 }
 
-/* Animation de transition 3 carrés ( site vitrine, site E-commerce, Autre ) */
+/* Agrandit légèrement le carré au survol ( site vitrine, site E-commerce, Autre ) */
 .square:hover {
-  transform: scale(1.05);
-  /* Agrandit légèrement le carré au survol */
-  transition: transform 0.3s ease-in-out;
+  transform: scale(1.05);  /* Agrandit légèrement le carré au survol */
+  transition: transform 0.3s ease-in-out;/* Transition fluide, durée de 0.3s et une accélération/décélération */
 }
 
 .paraSite1 {

@@ -89,8 +89,9 @@
 
 .div_slider_image {
   flex-basis: 60%;
-  background-size: cover;
+  background-size: 100% 100%; /* l'image couvre 100% en largeur et 100% en hauteur sans déformation */
   background-position: center;
+  object-fit: cover; /* éviter la déformation sur d'autres écrans */ 
 }
 
 .slider_image {
@@ -342,12 +343,9 @@
   }
 
   .slider_image {
-    object-fit: cover;
-    /* Garantit que l'image couvre tout le conteneur sans déformation */
-    width: 100%;
-    /* Ajuste la largeur pour remplir la largeur du conteneur parent */
-    max-height: 300px;
-    /* Fixe la hauteur maximale de l'image */
+    object-fit: contain;
+    width: 100%; /* Ajuste la largeur pour remplir la largeur du conteneur parent */
+    max-height: auto; /* Fixe la hauteur maximale de l'image */
   }
 
 

@@ -33,7 +33,7 @@ function Accueil() {
       logo: "images/logo.png",
       text: "sous-titre 1",
       textColor: "white",
-      background: "red",
+      background: "orange", // Orange foncé
     },
     {
       // Deuxième diapositive
@@ -42,7 +42,7 @@ function Accueil() {
       logo: "images/amazon.png",
       text: "sous-titre 2",
       textColor: "white",
-      background: "green",
+      background: "blue",
     },
     {
       // Troisième diapositive
@@ -51,7 +51,7 @@ function Accueil() {
       logo: "images/youtube.png",
       text: "sous-titre 3",
       textColor: "white",
-      background: "blue",
+      background: "violet", // violet foncé
     },
   ];
 
