@@ -104,7 +104,7 @@ const Projet = () => {
       <p className="paraProjet">Déterminons votre besoin avec le formulaire ci-dessous</p>
       {/* Composant 'Tabs' pour gérer les onglets */}
       <Tabs activeKey={activeTab} onSelect={handleTabSelect} id="devis-tabs" className="blockInfo">
-        {/* Onglet 1 */}
+        {/* Onglet 0 */}
         <Tab eventKey={0} title="Informations sur votre projet"> {/*Définit un onglet avec une clé unique (eventKey) égale à 0*/}
           {/* Contenu de l'onglet 1 */}
           <p className="paraDemande">Votre demande concerne : <span style={{ color: "red" }}>*</span></p>
@@ -142,13 +142,14 @@ const Projet = () => {
             </div>
           )}
         </Tab>
-        {/* Onglet 2 */}
+        {/* Onglet 1 */}
         <Tab eventKey={1} title="Informations sur votre demande">{/*Définit un onglet avec une clé unique (eventKey) égale à 1*/}
-          {/* Contenu de l'onglet 2 */}
+          {/* Contenu de l'onglet 1 */}
           <h3 style={{ padding: "10px" }}>
             Vous souhaitez :<span style={{ color: "red" }}>*</span>
           </h3>
           {/* Choix des services demandés avec des cases à cocher */}
+          <div className="checkbox-group">
           <label style={{ padding: "10px" }}>
             <input
               type="checkbox"
@@ -208,14 +209,15 @@ const Projet = () => {
             />
             <span style={{ marginLeft: "10px" }}>Un logo pour votre site</span>
           </label>
+          </div>
           <br />
           <p style={{ padding: "20px", textAlign: "left", color: "green", paddingTop: "10px" }}>
             * Vous pouvez choisir plusieurs options si vous le souhaitez.
           </p>
         </Tab>
-        {/* Onglet 3 */}
+        {/* Onglet 2 */}
         <Tab eventKey={2} title="Informations sur vous">{/*Définit un onglet avec une clé unique (eventKey) égale à 2*/}
-          {/* Contenu de l'onglet 3 */}
+          {/* Contenu de l'onglet 2 */}
           {/* Crée une instance "ErrorMsg" en lui passant la valeur "project_type, services".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
           <ErrorMsg
             projectType={project_type}

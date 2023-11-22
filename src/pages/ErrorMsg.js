@@ -1,11 +1,17 @@
+// Importe React et useState depuis la bibliothèque 'react'
 import React, { useState } from 'react';
-import * as Yup from 'yup'; // Importe toutes les fonctionnalités du module Yup (bibliothèque)
-import { yupResolver } from '@hookform/resolvers/yup'; // Importe la fonction yupResolver depuis le module '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form'; // Importation du hook useForm pour gérer le formulaire
+// Importe toutes les fonctionnalités du module Yup (bibliothèque de validation de schéma)
+import * as Yup from 'yup';
+// Importe la fonction yupResolver depuis le module '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+// Importe le hook useForm depuis la bibliothèque 'react-hook-form' pour gérer le formulaire
+import { useForm } from 'react-hook-form';
+// Importe le module axios pour effectuer des requêtes HTTP
 import axios from 'axios';
-// Importe le composant Popup depuis le fichier './Popup' et importe le CSS
+// Importe le composant Popup depuis le fichier './Popup' et importe le CSS associé
 import Popup from './Popup';
 import './Popup.css';
+
 
 
 
@@ -80,82 +86,100 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
   }
 
 
+
   return (
-    <div className="container mt-4">
-      <form onSubmit={handleSubmit(onSubmit)}> {/* Lorsqu'il est soumis, la fonction handleSubmit(onSubmit) sera appelée. */}
-        <div className="form-group" style={{ width: '500px' }}>
-          <label>Prénom</label>
-          <input // balise <input> Créer un champ de saisie dans un formulaire web.
-            name="first_name"
-            type="text"
-            className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
-            // Définit les classes CSS du champ de saisie. 'form-control' est toujours présente.
-            // 'is-invalid' est ajoutée si des erreurs existent pour le champ "first_name".  
-            {...register('first_name')}  // Lie le champ de saisie au formulaire en utilisant la méthode register 
-          />
-          <div className="invalid-feedback">{errors.first_name?.message}</div>
+    <div style={{ margin: '20px' }}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Rangée 1 */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <div style={{ flex: '1', marginRight: '10px' }}>
+            <label>Prénom</label>
+            <input
+              name="first_name"
+              type="text"
+              style={{ width: '100%', padding: '5px' }}
+              className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
+              {...register('first_name')}
+            />
+            <div className="invalid-feedback">{errors.first_name?.message}</div>
+          </div>
+          <div style={{ flex: '1' }}>
+            <label>Nom</label>
+            <input
+              name="last_name"
+              type="text"
+              style={{ width: '100%', padding: '5px' }}
+              className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
+              {...register('last_name')}
+            />
+            <div className="invalid-feedback">{errors.last_name?.message}</div>
+          </div>
         </div>
-        <div className="form-group" style={{ width: '500px' }}>
-          <label>Nom</label>
-          <input
-            name="last_name"
-            type="text"
-            className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
-            {...register('last_name')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
-          />
-          <div className="invalid-feedback">{errors.last_name?.message}</div>
+        {/* Rangée 2 */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <div style={{ flex: '1', marginRight: '10px' }}>
+            <label>Entreprise / Organisation</label>
+            <input
+              name="company_name"
+              type="text"
+              style={{ width: '100%', padding: '5px' }}
+              className={`form-control ${errors.company_name ? 'is-invalid' : ''}`}
+              {...register('company_name')}
+            />
+            <div className="invalid-feedback">{errors.company_name?.message}</div>
+          </div>
+          <div style={{ flex: '1' }}>
+            <label>Email</label>
+            <input
+              name="email"
+              type="text"
+              style={{ width: '100%', padding: '5px' }}
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+              {...register('email')}
+            />
+            <div className="invalid-feedback">{errors.email?.message}</div>
+          </div>
         </div>
-        <div className="form-group" style={{ width: '500px' }}>
-          <label>Entreprise / Organisation</label>
-          <input
-            name="company_name"
-            type="text"
-            className={`form-control ${errors.company_name ? 'is-invalid' : ''}`}
-            {...register('company_name')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
-          />
-          <div className="invalid-feedback">{errors.company_name?.message}</div>
+        {/* Rangée 3 */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <div style={{ flex: '1', marginRight: '10px' }}>
+            <label>Téléphone</label>
+            <input
+              name="phone_number"
+              type="text"
+              style={{ width: '100%', padding: '5px' }}
+              className={`form-control ${errors.phone_number ? 'is-invalid' : ''}`}
+              {...register('phone_number')}
+            />
+            <div className="invalid-feedback">{errors.phone_number?.message}</div>
+          </div>
+          <div style={{ flex: '1' }}>
+            <label>Site / URL</label>
+            <input
+              name="website_url"
+              type="text"
+              style={{ width: '100%', padding: '5px' }}
+              className={`form-control ${errors.website_url ? 'is-invalid' : ''}`}
+              {...register('website_url')}
+            />
+            <div className="invalid-feedback">{errors.website_url?.message}</div>
+          </div>
         </div>
-        <div className="form-group" style={{ width: '500px' }}>
-          <label>Email</label>
-          <input
-            name="email"
-            type="text"
-            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-            {...register('email')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
-          />
-          <div className="invalid-feedback">{errors.email?.message}</div>
-        </div>
-        <div className="form-group" style={{ width: '500px' }}>
-          <label>Téléphone</label>
-          <input
-            name="phone_number"
-            type="text"
-            className={`form-control ${errors.phone_number ? 'is-invalid' : ''}`}
-            {...register('phone_number')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
-          />
-          <div className="invalid-feedback">{errors.phone_number?.message}</div>
-        </div>
-        <div className="form-group" style={{ width: '500px' }}>
-          <label>Site / URL</label>
-          <input
-            name="website_url"
-            type="text"
-            className={`form-control ${errors.website_url ? 'is-invalid' : ''}`}
-            {...register('website_url')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
-          />
-          <div className="invalid-feedback">{errors.website_url?.message}</div>
-        </div>
-        <div className="form-group" style={{ width: '500px' }}>
+        {/* Rangée 4 */}
+        <div>
           <label>Parlez-nous de votre projet</label>
           <textarea
             name="project_description"
-            className={`form-control ${errors.project_description ? 'is-invalid' : ''}`} style={{ height: '150px' }}
-            {...register('project_description')} // Lie le champ de saisie au formulaire en utilisant la méthode register 
+            style={{ width: '100%', padding: '5px', height: '80px' }}
+            className={`form-control ${errors.project_description ? 'is-invalid' : ''}`}
+            {...register('project_description')}
           />
           <div className="invalid-feedback">{errors.project_description?.message}</div>
         </div>
-        <div className="mt-3">
-          <button type="submit" className="btn btn-primary"> Envoyer </button>
+        <div style={{ marginTop: '10px' }}>
+          <button type="submit" className="btn btn-primary">
+            Envoyer
+          </button>
         </div>
         {/* Afficher la popup si showPopup est true */}
         <Popup

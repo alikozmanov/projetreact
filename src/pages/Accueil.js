@@ -1,5 +1,6 @@
 
-import React, { useState } from "react";
+// Importations de modules 
+import React, { useState } from "react"; // Import de React et useState depuis la bibliothèque React
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importation de FontAwesome pour afficher des icônes
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône de la flèche gauche et droite
 

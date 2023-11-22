@@ -88,7 +88,7 @@ function Nav() {
           </button>
         </nav>
       </header>
-      {/* Section principale de la page qui affiche le contenu de la page courante */}
+      {/* Section principale de la page qui affiche le contenu de la page */}
       <main>
         <Outlet />
       </main>

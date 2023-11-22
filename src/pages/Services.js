@@ -55,7 +55,7 @@ const Services = () => {
   ];
 
   return (
-    <div>
+    <div className='backService'>
       <h1 className="classh1">MES SERVICES</h1>
       <h2 className="classh2">MES PRINCIPAUX DOMAINES DE COMPÉTENCE</h2>
       <div className="services">
