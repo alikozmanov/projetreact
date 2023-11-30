@@ -19,6 +19,7 @@ import './Popup.css';
 export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
   // Ajoutez un état pour gérer l'affichage de la popup
   const [showPopup, setShowPopup] = useState(false); // Crée 'showPopup' à l'aide de useState et initialise sa valeur à 'false'.
+  const [submittedData, setSubmittedData] = useState(null); // état pour stocker les données du formulaire soumises
   // "Yup.object()" crée un schéma de validation. La méthode "shape({})" définir les règles de VALIDATION
   const yupValidation = Yup.object().shape({
     first_name: Yup.string().required('Veuillez entrer votre prénom.').min(4, 'Le prénom doit contenir au moins 4 caractères.'), // méthode Yup indique que la valeur de la propriété "firstName" doit être une chaîne de caractères. Si la propriété "firstName" est vide, une erreur sera renvoyée avec le message "Veuillez entrer votre prénom." 
@@ -76,7 +77,8 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
         default:
           console.error('Méthode HTTP non prise en charge'); // Affiche une erreur si la méthode n'est pas reconnue
           return; // Sort de la fonction
-      } // Après avoir traité la soumission avec succès, réinitialisez le formulaire
+      }
+      setSubmittedData(data); // Après avoir traité la soumission avec succès, stockez les données soumises
       reset(); // Réinitialise le formulaire en utilisant la fonction reset de react-hook-form
       setShowPopup(true); // Pour afficher le popup lorsque showPopup est true
     }
@@ -84,8 +86,6 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
       // Gestion des erreurs en cas d'échec de la soumission (VIDE)
     }
   }
-
-
 
   return (
     <div style={{ margin: '20px' }}>
@@ -185,6 +185,13 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
         <Popup
           showPopup={showPopup} // La propriété 'showPopup' contrôle l'affichage de la popup en fonction de la valeur de 'showPopup'. 
           onClose={() => setShowPopup(false)} /> {/* Définit la variable showPopup à false, pour masquer la popup (fermé)*/}
+        {/* Section pour afficher les données soumises */}
+        {!showPopup && submittedData && (
+          <div style={{ marginTop: '20px' }}>
+            <h2>Données soumises :</h2>
+            <pre>{JSON.stringify(submittedData, null, 2)}</pre> {/*Données soumises sous forme JSON formatée avec un retrait de 2 espaces*/}
+          </div>
+        )}
       </form>
     </div>
   );
