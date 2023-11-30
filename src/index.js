@@ -10,12 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
 
 // importe les modules nécessaires de la bibliothèque react-router-dom. 
-//BrowserRouter est un composant qui fournit le contexte pour le routage, 
-//Routes est un composant qui contient les routes de l'application, et Route est un composant qui définit une route spécifique.
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //Les lignes suivantes importent les composants et les pages utilisés dans l'application :
-import Nav from "./pages/Nav";
+import Nav from "./pages/Nav"; // Importe le composant de navigation depuis le fichier './pages/Nav'
 import Accueil from "./pages/Accueil";
 import Services from "./pages/Services";
 import Apropos from "./pages/Apropos";

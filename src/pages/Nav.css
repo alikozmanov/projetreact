@@ -209,40 +209,79 @@
   opacity: 1.0;
 }
 
+/* devis.js */
+.backDevis {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 80vh;
+}
+
+.h1Devis {
+  font-size: 24px;
+}
+
+.paraDevis {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.buttonDevis {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+/* Effet au survol du bouton "Demander un devis" */
+.buttonDevis:hover {
+  background-color: blue; /* Couleur bleue au survol */
+  color: white; /* Texte en blanc au survol */
+  cursor: pointer; /* Curseur de type pointer au survol */
+}
 
 
 
 
 @media screen and (max-width:850px) {
+  /* Début responsive uniquement lorsque la largeur d'écran est inférieure ou égale à 850px */
 
-  /* NAVBAR */
+  /* STYLES POUR LA NAVBAR EN MODE MOBILE */
   .navbar_links {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
     right: -100vw;
+    /* Masque la barre de navigation à l'extérieur de l'écran */
     bottom: 0;
     width: 0;
+    /* Initialise la largeur à 0, la barre de navigation est initialement cachée */
     height: 100vh;
+    /* Prend la hauteur de la fenêtre */
     padding: 2rem;
     visibility: hidden;
+    /* Rend l'élément invisible */
     background-color: black;
     transition: all 0.8s ease-out;
+    /* Animation 0.80 secondes et 'ease-out' fonction de minutage */
   }
 
+  /* Styles lorsque la barre de navigation est affichée (classe .show-nav) */
   .show-nav .navbar_links {
     width: 100vw;
+    /* Affiche la barre de navigation sur toute la largeur de l'écran */
     right: 0;
+    /* Positionne la barre de navigation à droite */
     visibility: visible;
   }
 
+  /* Styles pour chaque lien de la barre de navigation mobile */
   .navbar_link {
     display: block;
     padding: 1.5rem;
     font-size: 5vw;
+    /* Taille du texte de la barre de navigation en unités de la largeur de la fenêtre */
   }
 
+  /* Styles du bouton burger */
   .navbar_burger {
     display: block;
     position: fixed;
@@ -254,6 +293,7 @@
     cursor: pointer;
   }
 
+  /* Styles des lignes du burger */
   .burger-bar,
   .burger-bar::before,
   .burger-bar::after {
@@ -283,6 +323,7 @@
     /* Décale l'élément .burger-bar vers le bas de 12 pixels */
   }
 
+  /* Animation des lignes du burger lorsqu'il est ouvert */
   .show-nav .burger-bar {
     width: 0;
     background: transparent;
@@ -309,6 +350,7 @@
     /* Rétablit la position d'origine de l'élément .navbar_item lorsque la classe .show-nav est présente */
   }
 
+  /* Transition spécifique pour chaque lien de la barre de navigation */
   .show-nav .slideInDown-1 {
     transition: all 0.8s ease-out;
   }
@@ -358,7 +400,7 @@
   }
 
 
- /* demander un devis (PROJET) responsive */
+  /* demander un devis (PROJET) responsive */
   /* Onglet 0 */
   .backProjet,
   .paraProjet,
@@ -399,8 +441,7 @@
   }
 
   .containerSquare,
-  .square
-  .paraSite {
+  .square .paraSite {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -416,11 +457,13 @@
     width: 80px;
     height: 80px;
   }
+
   .textContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .paraSite1,
   .paraSite2,
   .paraSite3 {
@@ -435,7 +478,7 @@
     order: 3;
   }
 
- /* demander un devis (PROJET) responsive */
+  /* demander un devis (PROJET) responsive */
   /* Onglet 1 */
   .tab-content {
     font-size: 10px;
@@ -444,14 +487,15 @@
   h3 {
     font-size: 14px;
   }
-/* checkbox alignement */
+
+  /* checkbox alignement */
   .checkbox-group {
     display: flex;
     justify-content: space-between;
     padding: 10px;
   }
 
- /* demander un devis (PROJET) responsive */
+  /* demander un devis (PROJET) responsive */
   /* Onglet 2 */
 
 
@@ -562,6 +606,15 @@
     padding-top: 43px;
   }
 
+  /* Devis */
+  .buttonDevis {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  .backDevis {
+    width: 100%;
+    height: 80vh;
+  }
 
 
 
