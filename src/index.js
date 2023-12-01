@@ -1,6 +1,6 @@
 // Import des modules (React et ReactDom)
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from "react"; // Importe la bibliothèque React pour la création de composants
+import ReactDOM from "react-dom/client"; // Importe la fonction ReactDOM.render pour rendre un composant React dans le DOM
 
 
 /* La ligne pour le css (Projet.js (Tabs)) */

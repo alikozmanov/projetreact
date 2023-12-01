@@ -9,12 +9,12 @@ const Projet = () => {
   // Utilisation du hook "useState" pour gérer l'état du composant
   const [activeTab, setActiveTab] = useState(0);  // // Déclare une variable d'état 'activeTab' avec une valeur initiale de 0. Cette variable sera utilisée pour suivre l'onglet actif sélectionné dans le composant.
   const [selectedImages, setSelectedImages] = useState([]); // Déclare une variable d'état 'selectedImages' avec une valeur initiale d'un tableau vide. Cette variable sera utilisée pour stocker les images sélectionnées dans le projet.
+  const [project_description, setProjectDescription] = useState(''); // Déclare une variable d'état 'projectDescription' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker une description du projet.
+    // props 
   const [other_text, setOtherText] = useState(''); // Déclare une variable d'état 'autreTexte' avec une valeur initiale d'une chaîne vide.
-  const [project_description, setProjectDescription] = useState(''); // Déclare une variable d'état 'projectDescription' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker une description du projet. 
   const [project_type, setProjectType] = useState('');// Déclarez la variable d'état projectType et le setter setProjectType dans votre composant
-  const [services_requests, setServicesRequests] = useState([]);
+  const [services_requests, setServicesRequests] = useState([]); // avec une valeur initiale d'un tableau vide
   
-
 
 
   // Fonction pour gérer le changement d'onglet (0,1,2)

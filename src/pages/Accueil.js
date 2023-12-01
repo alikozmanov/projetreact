@@ -1,8 +1,8 @@
 
-// Importations de modules 
-import React, { useState } from "react"; // Import de React et useState depuis la bibliothèque React
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importation de FontAwesome pour afficher des icônes
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Import de l'icône de la flèche gauche et droite
+// Importations des modules 
+import React, { useState } from "react"; // Importe de React et useState depuis la bibliothèque React
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importe FontAwesomeIcon pour afficher des icônes
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'; // Importe de l'icône de la flèche gauche et droite
 
 
 // État pour suivre l'index de la diapositive actuelle
@@ -11,13 +11,13 @@ function Accueil() {
 
   // Fonction pour passer à la diapositive précédente
   const handlePrevSlide = () => {
-    //Si prevSlide est égal à 0, currentSlide prend la valeur 2 sinon, currentSlide est décrémentée de 1 pour passer à la diapositive précédente
+    // Si prevSlide est égal à 0, retourne à la diapositive (2), sinon décrémente de 1.
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? 2 : prevSlide - 1)); // (?) ternaire évaluer une condition
   };
 
   // Fonction pour passer à la diapositive suivante
   const handleNextSlide = () => {
-    // Si prevSlide est égal à 2, currentSlide prend la valeur 0 (?ternaire) sinon, currentSlide +1 pour passer à la diapositive suivante 
+    // Si la prevSlide est égal à 2, retourne à la première diapositive (0), sinon incrément de 1. 
     setCurrentSlide((prevSlide) => (prevSlide === 2 ? 0 : prevSlide + 1));
   };
 
@@ -64,7 +64,6 @@ function Accueil() {
           {/* Boucle de mappage sur le tableau 'slides' pour afficher chaque diapositive */}
           {slides.map((slide, index) => (
             <React.Fragment key={index}> {/* Fragment React avec une clé unique basée sur (l'index) pour chaque diapositive */}
-              {/* vérifie si currentSlide est égale à la l'index */}
               {currentSlide === index && (
                 <>
                   <div className="div_slider_image" style={{ backgroundImage: "url(" + slide.image + ")" }}>
