@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React from 'react'; // Importation du module React depuis la bibliothèque React
+import { Helmet } from "react-helmet"; // Importation du composant Helmet depuis la bibliothèque react-helmet
 
 // Composant InstaSvg qui affiche l'icône Instagram avec un lien
 const Insta = () => (
@@ -6,8 +8,8 @@ const Insta = () => (
     <img
       src="/images/insta.png"
       alt="Instagram"
-      width="24" 
-      height="24" 
+      width="24"
+      height="24"
     />
   </a>
 );
@@ -15,11 +17,11 @@ const Insta = () => (
 // Composant LinkedinSvg qui affiche l'icône LinkedIn avec un lien
 const Linkedin = () => (
   <a class="icon-instagram" href="https://www.linkedin.com/">
-     <img
+    <img
       src="/images/link.png"
       alt="Instagram"
-      width="24" 
-      height="24" 
+      width="24"
+      height="24"
     />
   </a>
 );
@@ -27,21 +29,27 @@ const Linkedin = () => (
 // Composant Apropos qui affiche les informations de la page "À propos" et les icônes
 function Apropos() {
   return (
-    <div className="backApropos apropos-container">
-      <h1 className="aPropos">Qui suis-je ?</h1>
-      <img className="imgProfile animatedProfile" src="/images/img.jpeg" alt="Photo de profil" />
-      <p className="prenom">Oguz Donmez</p>
-      <p className="metier">Développeur Web</p>
-      <p className="presentation">
-        Ayant travaillé dans le domaine du web depuis 5 ans et ayant exploré toutes ses facettes, 
-        j'ai décidé de me lancer en tant que freelance pour accompagner mes clients de A à Z dans 
-        la digitalisation de leurs activités.
-      </p>
-      <div className="containerImage">
-        <Insta /> {/* Inclut l'icône Instagram */}
-        <Linkedin /> {/* Inclut l'icône LinkedIn */}
+    <>
+      <Helmet>
+        <title>À propos</title>
+        <meta name="description" content="Découvrez qui je suis, mes compétences en tant que développeur web freelance, et explorez mes expériences dans le domaine du web. Connectez-vous avec moi sur Instagram et LinkedIn." />
+      </Helmet>
+      <div className="backApropos apropos-container">
+        <h1 className="aPropos">Qui suis-je ?</h1>
+        <img className="imgProfile animatedProfile" src="/images/img.jpeg" alt="Photo de profil" />
+        <p className="prenom">Oguz Donmez</p>
+        <p className="metier">Développeur Web</p>
+        <p className="presentation">
+          Ayant travaillé dans le domaine du web depuis 5 ans et ayant exploré toutes ses facettes,
+          j'ai décidé de me lancer en tant que freelance pour accompagner mes clients de A à Z dans
+          la digitalisation de leurs activités.
+        </p>
+        <div className="containerImage">
+          <Insta /> {/* Inclut l'icône Instagram */}
+          <Linkedin /> {/* Inclut l'icône LinkedIn */}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

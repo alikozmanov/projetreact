@@ -4,17 +4,17 @@ import { Tabs, Tab, Button } from 'react-bootstrap'; // Importe les composants T
 import ErrorMsg from './ErrorMsg'; // Importe ErrorMsg depuis le fichier ErrorMsg.js
 
 
-// composant fonctionnel appelé 'Projet'.
+
 const Projet = () => {
   // Utilisation du hook "useState" pour gérer l'état du composant
-  const [activeTab, setActiveTab] = useState(0);  // // Déclare une variable d'état 'activeTab' avec une valeur initiale de 0. Cette variable sera utilisée pour suivre l'onglet actif sélectionné dans le composant.
-  const [selectedImages, setSelectedImages] = useState([]); // Déclare une variable d'état 'selectedImages' avec une valeur initiale d'un tableau vide. Cette variable sera utilisée pour stocker les images sélectionnées dans le projet.
-  const [project_description, setProjectDescription] = useState(''); // Déclare une variable d'état 'projectDescription' avec une valeur initiale d'une chaîne vide. Cette variable peut être utilisée pour stocker une description du projet.
-    // props 
-  const [other_text, setOtherText] = useState(''); // Déclare une variable d'état 'autreTexte' avec une valeur initiale d'une chaîne vide.
-  const [project_type, setProjectType] = useState('');// Déclarez la variable d'état projectType et le setter setProjectType dans votre composant
-  const [services_requests, setServicesRequests] = useState([]); // avec une valeur initiale d'un tableau vide
-  
+  const [activeTab, setActiveTab] = useState(0);  
+  const [selectedImages, setSelectedImages] = useState([]);   
+  const [project_description, setProjectDescription] = useState(''); 
+  // props 
+  const [other_text, setOtherText] = useState(''); 
+  const [project_type, setProjectType] = useState('');
+  const [services_requests, setServicesRequests] = useState([]); 
+
 
 
   // Fonction pour gérer le changement d'onglet (0,1,2)
@@ -102,24 +102,26 @@ const Projet = () => {
     <div className="backProjet">
       <h1 className="h1Projet">Un projet ?</h1>
       <p className="paraProjet">Déterminons votre besoin avec le formulaire ci-dessous</p>
-      {/* Composant 'Tabs' pour gérer les onglets */}
-      <Tabs activeKey={activeTab} onSelect={handleTabSelect} id="devis-tabs" className="blockInfo">
+      <Tabs activeKey={activeTab} onSelect={handleTabSelect} id="devis-tabs" className="blockInfo"> 
         {/* Onglet 0 */}
-        <Tab eventKey={0} title="Informations sur votre projet"> {/*Définit un onglet avec une clé unique (eventKey) égale à 0*/}
+        <Tab eventKey={0} title="Informations sur votre projet"> 
           {/* Contenu de l'onglet 1 */}
           <p className="paraDemande">Votre demande concerne : <span style={{ color: "red" }}>*</span></p>
           {/* Sélection des images carrées */}
           <div className="containerSquare">
+            {/* si l'image d'index 0 est sélectionnée, déclenche handleImageClick(0) au clic. */}
             <div className={`square ${selectedImages.includes(0) ? 'selected' : ''}`} onClick={() => handleImageClick(0)}>
               <img className='imgSquare' src="/images/site-web-vitrine.jpg" title="Un Site Vitrine" />
               {selectedImages.includes(0) && <span className="checkMark">✓</span>}
               <p className="paraSite1">Un Site Vitrine</p>
             </div>
+             {/* si l'image d'index 1 est sélectionnée, déclenche handleImageClick(1) au clic. */}
             <div className={`square ${selectedImages.includes(1) ? 'selected' : ''}`} onClick={() => handleImageClick(1)}>
               <img className='imgSquare' src="/images/Ecommerce.png" title="Un Site e-commerce" />
               {selectedImages.includes(1) && <span className="checkMark">✓</span>}
               <p className="paraSite2">Un Site E-commerce</p>
             </div>
+             {/* si l'image d'index 2 est sélectionnée, déclenche handleImageClick(2) au clic. */}
             <div className={`square ${selectedImages.includes(2) ? 'selected' : ''}`} onClick={() => handleImageClick(2)}>
               <img className='imgSquare' src="/images/ordinateur.jpeg" title="Autre" />
               {selectedImages.includes(2) && <span className="checkMark">✓</span>}
@@ -143,72 +145,72 @@ const Projet = () => {
           )}
         </Tab>
         {/* Onglet 1 */}
-        <Tab eventKey={1} title="Informations sur votre demande">{/*Définit un onglet avec une clé unique (eventKey) égale à 1*/}
+        <Tab eventKey={1} title="Informations sur votre demande">
           {/* Contenu de l'onglet 1 */}
           <h3 style={{ padding: "10px" }}>
             Vous souhaitez :<span style={{ color: "red" }}>*</span>
           </h3>
           {/* Choix des services demandés avec des cases à cocher */}
           <div className="checkbox-group">
-          <label style={{ padding: "10px" }}>
-            <input
-              type="checkbox"
-              name="service"
-              value="creation-site-internet"
-              onChange={() => handleServiceRequestChange("creation-site-internet")}
-            />
-            <span style={{ marginLeft: "10px" }}>Créer votre site internet</span>
-          </label>
-          <br />
-          <label style={{ padding: "10px" }}>
-            <input
-              type="checkbox"
-              name="service"
-              value="refonte-site-existant"
-              onChange={() => handleServiceRequestChange("refonte-site-existant")}
-            />
-            <span style={{ marginLeft: "10px" }}>Faire une refonte d'un site existant</span>
-          </label>
-          <br />
-          <label style={{ padding: "10px" }}>
-            <input
-              type="checkbox"
-              name="service"
-              value="ameliorer-site"
-              onChange={() => handleServiceRequestChange("ameliorer-site")}
-            />
-            <span style={{ marginLeft: "10px" }}>Améliorer votre site</span>
-          </label>
-          <br />
-          <label style={{ padding: "10px" }}>
-            <input
-              type="checkbox"
-              name="service"
-              value="maintenance-site"
-              onChange={() => handleServiceRequestChange("maintenance-site")}
-            />
-            <span style={{ marginLeft: "10px" }}>Une maintenance de votre site</span>
-          </label>
-          <br />
-          <label style={{ padding: "10px" }}>
-            <input
-              type="checkbox"
-              name="service"
-              value="migration-site"
-              onChange={() => handleServiceRequestChange("migration-site")}
-            />
-            <span style={{ marginLeft: "10px" }}>Une migration de votre site</span>
-          </label>
-          <br />
-          <label style={{ padding: "10px" }}>
-            <input
-              type="checkbox"
-              name="service"
-              value="logo-site"
-              onChange={() => handleServiceRequestChange("logo-site")}
-            />
-            <span style={{ marginLeft: "10px" }}>Un logo pour votre site</span>
-          </label>
+            <label style={{ padding: "10px" }}>
+              <input
+                type="checkbox"
+                name="service"
+                value="creation-site-internet"
+                onChange={() => handleServiceRequestChange("creation-site-internet")}
+              />
+              <span style={{ marginLeft: "10px" }}>Créer votre site internet</span>
+            </label>
+            <br />
+            <label style={{ padding: "10px" }}>
+              <input
+                type="checkbox"
+                name="service"
+                value="refonte-site-existant"
+                onChange={() => handleServiceRequestChange("refonte-site-existant")}
+              />
+              <span style={{ marginLeft: "10px" }}>Faire une refonte d'un site existant</span>
+            </label>
+            <br />
+            <label style={{ padding: "10px" }}>
+              <input
+                type="checkbox"
+                name="service"
+                value="ameliorer-site"
+                onChange={() => handleServiceRequestChange("ameliorer-site")}
+              />
+              <span style={{ marginLeft: "10px" }}>Améliorer votre site</span>
+            </label>
+            <br />
+            <label style={{ padding: "10px" }}>
+              <input
+                type="checkbox"
+                name="service"
+                value="maintenance-site"
+                onChange={() => handleServiceRequestChange("maintenance-site")}
+              />
+              <span style={{ marginLeft: "10px" }}>Une maintenance de votre site</span>
+            </label>
+            <br />
+            <label style={{ padding: "10px" }}>
+              <input
+                type="checkbox"
+                name="service"
+                value="migration-site"
+                onChange={() => handleServiceRequestChange("migration-site")}
+              />
+              <span style={{ marginLeft: "10px" }}>Une migration de votre site</span>
+            </label>
+            <br />
+            <label style={{ padding: "10px" }}>
+              <input
+                type="checkbox"
+                name="service"
+                value="logo-site"
+                onChange={() => handleServiceRequestChange("logo-site")}
+              />
+              <span style={{ marginLeft: "10px" }}>Un logo pour votre site</span>
+            </label>
           </div>
           <br />
           <p style={{ padding: "20px", textAlign: "left", color: "green", paddingTop: "10px" }}>
@@ -216,7 +218,7 @@ const Projet = () => {
           </p>
         </Tab>
         {/* Onglet 2 */}
-        <Tab eventKey={2} title="Informations sur vous">{/*Définit un onglet avec une clé unique (eventKey) égale à 2*/}
+        <Tab eventKey={2} title="Informations sur vous">
           {/* Contenu de l'onglet 2 */}
           {/* Crée une instance "ErrorMsg" en lui passant la valeur "project_type, services".Ensuite l'utilisée à l'intérieur "ErrorMsg" */}
           <ErrorMsg

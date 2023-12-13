@@ -14,13 +14,13 @@ import './Popup.css';
 
 
 
-
 // Composant ErrorMsg exporté par défaut, prenant "projectType,servicesRequests" comme argument.
 export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
   // Ajoutez un état pour gérer l'affichage de la popup
   const [showPopup, setShowPopup] = useState(false); // Crée 'showPopup' à l'aide de useState et initialise sa valeur à 'false'.
   const [submittedData, setSubmittedData] = useState(null); // état pour stocker les données du formulaire soumises
-  // "Yup.object()" crée un schéma de validation. La méthode "shape({})" définir les règles de VALIDATION
+  
+
   const yupValidation = Yup.object().shape({
     first_name: Yup.string().required('Veuillez entrer votre prénom.').min(4, 'Le prénom doit contenir au moins 4 caractères.'), // méthode Yup indique que la valeur de la propriété "firstName" doit être une chaîne de caractères. Si la propriété "firstName" est vide, une erreur sera renvoyée avec le message "Veuillez entrer votre prénom." 
     last_name: Yup.string().required('Veuillez entrer votre nom.').min(4, 'Le nom doit contenir au moins 4 caractères.'),
@@ -42,13 +42,13 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
 
 
   // ENVOI DU FORMULAIRE VIA L'API
-  const baseURL = 'http://projetlaravel/api/estimates'; // URL de base
-  const method = 'POST'; // Définissez la méthode HTTP (POST)
+  const baseURL = 'http://projetlaravel/api/estimates'; // URL de base de l'API
+  const method = 'POST'; 
 
   // fonction pour soumettre le formulaire
   async function onSubmit(data) { // Fonction asynchrone pour gérer la soumission du formulaire
     try {
-      if (otherText === null || otherText === undefined) {
+      if (otherText === null || otherText === undefined) { 
         console.error("La valeur de 'otherText' ne peut pas être nulle");
         return;
       }
@@ -57,33 +57,35 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
       // Utilisation d'une instruction switch pour gérer différentes méthodes HTTP
       switch (method) {
         case 'POST':
+          // Ajoute des informations supplémentaires aux données du formulaire pour la méthode POST
           data.project_type = projectType; // Attribue la valeur de "projectType" à la propriété "project_type" de l'objet "data"
           data.services_requests = servicesRequests.toString(); // Convertit l'objet servicesRequests en une chaîne de caractères et l'assigne à la variable data.services_requests 
           data.other_text = otherText;
-          // Effectue une requête POST vers l'URL de base avec les données et un en-tête CSRF
-          console.log(data);// Affiche les données du formulaire dans la console
-          response = await axios.post(baseURL, data, { // Effectue une requête POST vers l'URL de base avec les données du formulaire
+          // Effectue une requête POST (crée) vers l'URL de base avec les données du formulaire et un en-tête CSRF
+          console.log(data);
+          response = await axios.post(baseURL, data, {
             headers: {// un en-tête CSRF (Cross-Site Request Forgery) pour renforcer la sécurité de la requête
               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             },
           });
-          break; // Sort du switch lorsque la méthode est 'POST'
+          break; 
         case 'PUT':
-          response = await axios.put(baseURL, data); // Effectue une requête PUT avec les données à l'URL de base
-          break; // Sort du switch lorsque la méthode est 'PUT'
+          // Effectue une requête PUT vers l'URL de base avec les données du formulaire pour une mise à jour
+          response = await axios.put(baseURL, data);
+          break;
         case 'DELETE':
-          response = await axios.delete(baseURL, { data }); // Effectue une requête DELETE avec les données à l'URL de base
-          break; // Sort du switch lorsque la méthode est 'DELETE'
+           // Effectue une requête DELETE vers l'URL de base avec les données du formulaire pour supprimer une ressource
+          response = await axios.delete(baseURL, { data }); 
+          break; 
         default:
           console.error('Méthode HTTP non prise en charge'); // Affiche une erreur si la méthode n'est pas reconnue
-          return; // Sort de la fonction
+          return; 
       }
       setSubmittedData(data); // Après avoir traité la soumission avec succès, stockez les données soumises
-      reset(); // Réinitialise le formulaire en utilisant la fonction reset de react-hook-form
-      setShowPopup(true); // Pour afficher le popup lorsque showPopup est true
+      reset(); 
+      setShowPopup(true); 
     }
     catch (error) {
-      // Gestion des erreurs en cas d'échec de la soumission (VIDE)
     }
   }
 
@@ -99,7 +101,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
               type="text"
               style={{ width: '100%', padding: '5px' }}
               className={`form-control ${errors.first_name ? 'is-invalid' : ''}`}
-              {...register('first_name')}
+              {...register('first_name')} // Enregistre le champ 
             />
             <div className="invalid-feedback">{errors.first_name?.message}</div>
           </div>
@@ -110,7 +112,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
               type="text"
               style={{ width: '100%', padding: '5px' }}
               className={`form-control ${errors.last_name ? 'is-invalid' : ''}`}
-              {...register('last_name')}
+              {...register('last_name')} // Enregistre le champ
             />
             <div className="invalid-feedback">{errors.last_name?.message}</div>
           </div>
@@ -124,7 +126,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
               type="text"
               style={{ width: '100%', padding: '5px' }}
               className={`form-control ${errors.company_name ? 'is-invalid' : ''}`}
-              {...register('company_name')}
+              {...register('company_name')} // Enregistre le champ
             />
             <div className="invalid-feedback">{errors.company_name?.message}</div>
           </div>
@@ -135,7 +137,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
               type="text"
               style={{ width: '100%', padding: '5px' }}
               className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-              {...register('email')}
+              {...register('email')} // Enregistre le champ
             />
             <div className="invalid-feedback">{errors.email?.message}</div>
           </div>
@@ -149,7 +151,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
               type="text"
               style={{ width: '100%', padding: '5px' }}
               className={`form-control ${errors.phone_number ? 'is-invalid' : ''}`}
-              {...register('phone_number')}
+              {...register('phone_number')} // Enregistre le champ
             />
             <div className="invalid-feedback">{errors.phone_number?.message}</div>
           </div>
@@ -160,7 +162,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
               type="text"
               style={{ width: '100%', padding: '5px' }}
               className={`form-control ${errors.website_url ? 'is-invalid' : ''}`}
-              {...register('website_url')}
+              {...register('website_url')} // Enregistre le champ
             />
             <div className="invalid-feedback">{errors.website_url?.message}</div>
           </div>
@@ -172,7 +174,7 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
             name="project_description"
             style={{ width: '100%', padding: '5px', height: '80px' }}
             className={`form-control ${errors.project_description ? 'is-invalid' : ''}`}
-            {...register('project_description')}
+            {...register('project_description')} // Enregistre le champ
           />
           <div className="invalid-feedback">{errors.project_description?.message}</div>
         </div>
@@ -183,13 +185,13 @@ export default function ErrorMsg({ projectType, servicesRequests, otherText }) {
         </div>
         {/* Afficher la popup si showPopup est true */}
         <Popup
-          showPopup={showPopup} // La propriété 'showPopup' contrôle l'affichage de la popup en fonction de la valeur de 'showPopup'. 
+          showPopup={showPopup} 
           onClose={() => setShowPopup(false)} /> {/* Définit la variable showPopup à false, pour masquer la popup (fermé)*/}
         {/* Section pour afficher les données soumises */}
         {!showPopup && submittedData && (
           <div style={{ marginTop: '20px' }}>
             <h2>Données soumises :</h2>
-            <pre>{JSON.stringify(submittedData, null, 2)}</pre> {/*Données soumises sous forme JSON formatée avec un retrait de 2 espaces*/}
+            <pre>{JSON.stringify(submittedData, null, 2)}</pre>
           </div>
         )}
       </form>

@@ -1,5 +1,6 @@
-// Importation de la bibliothèque React
-import React from 'react';
+
+import React from 'react'; // Importation de la bibliothèque React
+import { Helmet } from "react-helmet"; // Importation du composant Helmet depuis la bibliothèque react-helmet
 
 // Définition d'un tableau de projets avec des données de démonstration
 const projects = [
@@ -24,28 +25,34 @@ const projects = [
 // Définition du composant Portfolio
 function Portfolio() {
   return (
-    <div>
-      {projects.map(project => ( // Parcourt le tableau de projets et crée un élément pour chaque projet
-        <div key={project.id} style={{ display: 'flex' }}>
-          <div style={{marginRight: '20px', padding: '100px' }}>
-            {/* Titre du projet */}
-            <h2 className="project-title">{project.title}</h2>
-            {/* Description du projet */}
-            <p className="project-description">{project.description}</p>
-            {/* Description de l'intervention sur le projet */}
-            <p className="project-intervention">{project.intervention}</p>
+    <>
+      <Helmet>
+        <title>Portfolio</title>
+        <meta name="description" content="Découvrez mes projets récents et explorez les détails de mon travail. Consultez les refontes graphiques, les applications web, et d'autres interventions que j'ai réalisées pour mes clients." />
+      </Helmet>
+      <div>
+        {projects.map(project => ( // Parcourt le tableau de projets et crée un élément pour chaque projet
+          <div key={project.id} style={{ display: 'flex' }}>
+            <div style={{ marginRight: '20px', padding: '100px' }}>
+              {/* Titre du projet */}
+              <h2 className="project-title">{project.title}</h2>
+              {/* Description du projet */}
+              <p className="project-description">{project.description}</p>
+              {/* Description de l'intervention sur le projet */}
+              <p className="project-intervention">{project.intervention}</p>
+            </div>
+            <div>
+              {/* Image du projet */}
+              <img
+                className="project-image"
+                src={project.image}
+                alt={project.title}
+              />
+            </div>
           </div>
-          <div>
-            {/* Image du projet */}
-            <img
-              className="project-image"
-              src={project.image}
-              alt={project.title}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 

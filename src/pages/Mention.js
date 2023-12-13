@@ -1,7 +1,14 @@
-import React from 'react';
+
+import React from 'react'; // Importation du module React depuis la bibliothèque React
+import { Helmet } from "react-helmet"; // Importation du composant Helmet depuis la bibliothèque react-helmet
 
 const Mention = () => {
   return (
+    <>
+    <Helmet>
+      <title>Mentions Légales - tonsite.com</title>
+      <meta name="description" content="Consultez les mentions légales de ce site, y compris des informations sur l'hébergeur, le système de gestion de contenu, et le copyright." />
+    </Helmet>
     <footer className="footer-Mention">
       <div>
         <p><strong>Hébergeur :</strong></p>
@@ -30,6 +37,7 @@ const Mention = () => {
         </p>
       </div>
     </footer>
+    </>
   );
 };
 
